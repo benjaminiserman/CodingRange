@@ -15,7 +15,7 @@ namespace CodingRange
                 new TestCase(new object[] { -7 }, -14),
                 new TestCase(new object[] { 5 }, 10),
                 new TestCase(new object[] { 817 }, 1634),
-                new TestCase(new object[] { 4 }, 8),
+                new TestCase(new object[] { -51 }, -102),
                 new TestCase(new object[] { 21 }, 42),
             }),
             new Problem("Squares", "Return the input squared (hint: multiplied by itself).", "int x", "int", new[] {
@@ -31,9 +31,9 @@ namespace CodingRange
                 new TestCase(new object[] { 1 }, -1),
                 new TestCase(new object[] { 0 }, 0),
                 new TestCase(new object[] { -7 }, 7),
-                new TestCase(new object[] { 5 }, -5),
-                new TestCase(new object[] { 817 }, -817),
-                new TestCase(new object[] { 4 }, -4),
+                new TestCase(new object[] { 6 }, -6),
+                new TestCase(new object[] { -523 }, 523),
+                new TestCase(new object[] { 375 }, -375),
                 new TestCase(new object[] { 21 }, -21),
             }),
             new Problem("Order of Operations", "Add one to the input and return that new value multplied by negative two.", "int x", "int", new[] {

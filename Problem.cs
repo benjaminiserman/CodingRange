@@ -10,14 +10,16 @@ namespace CodingRange
         readonly string expectedSignature;
         readonly string expectedOutput;
         readonly TestCase[] testCases;
+        readonly string specialNotes;
 
-        public Problem(string name, string description, string expectedSignature, string expectedOutput, TestCase[] testCases)
+        public Problem(string name, string description, string expectedSignature, string expectedOutput, TestCase[] testCases, string specialNotes = null)
         {
             this.name = name;
             this.description = description;
             this.expectedSignature = expectedSignature;
             this.expectedOutput = expectedOutput;
             this.testCases = testCases;
+            this.specialNotes = specialNotes;
         }
 
         public void Evaluate(MethodInfo method)
@@ -57,6 +59,7 @@ namespace CodingRange
             int id = ProblemList.List.FindIndex(x => x.name == name);
 
             Console.WriteLine($"Problem {id}: {name}\nInstructions:\n\n{description}\n\nExpected method signature: {expectedSignature}\nExpected output type: {expectedOutput}\n");
+            if (!string.IsNullOrWhiteSpace(specialNotes)) Console.WriteLine(specialNotes);
         }
 
         private static string ArrayToString(object[] array)
