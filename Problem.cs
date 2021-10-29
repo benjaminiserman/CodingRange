@@ -34,7 +34,7 @@ namespace CodingRange
                 }
                 catch (TargetParameterCountException)
                 {
-                    Console.WriteLine($"Error! Incorrect number of parameters. Problem \"{name}\" expects {@case.inputs.Length} inputs.");
+                    Console.WriteLine($"Error! Incorrect number of parameters. Problem \"{name}\" expects {@case.inputs?.Length ?? 0} inputs.");
                     return;
                 }
                 catch (ArgumentException)

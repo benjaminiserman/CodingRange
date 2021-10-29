@@ -1,33 +1,164 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace CodingRange
 {
     public static class ProblemList
     {
+        /* SPECIAL NOTES
+         * - unless otherwise noted, you do not need to check for over/underflow or divide by zero.
+         * 
+         * 
+         */
         public static List<Problem> List { get; } = new()
         {
             new Problem("Hello World", "Return the string \"Hello World!\".", "(no parameters)", "string", new[] { 
                 new TestCase(null, "Hello World!")
             }),
-            new Problem("Doubling", "Return the input multiplied by two.", "int x", "int", new[] {
+            new Problem("Cringe?", "Given a boolean representing whether or not a person is epic, return a boolean representing whether or not they are cringe (NOT epic).", "bool x", "bool", new[]
+            {
+                new TestCase(new object[] { true }, false),
+                new TestCase(new object[] { false }, true),
+            }),
+            new Problem("Pills", "You are given two booleans, the first represents whether or not a person is red-pilled. The second represents whether or not a person is blue-pilled. We don't care about colors, so just return whether or not they are pilled at all.", "bool redPilled, bool bluePilled", "bool", new[]
+            {
+                new TestCase(new object[] { false, false }, false),
+                new TestCase(new object[] { false, true }, true),
+                new TestCase(new object[] { true, false }, true),
+                new TestCase(new object[] { true, true }, true),
+            }),
+            new Problem("Cat Person", "You are given two inputs. The first is a boolean representing whether or not a person in question owns a cat.\nThe second refers to whether or not a person owns a dog. Return whether or not the person is a cat person, meaning they own a cat but not a dog.", "bool cat, bool dog", "bool", new[]
+            {
+                new TestCase(new object[] { false, false }, false),
+                new TestCase(new object[] { false, true }, false),
+                new TestCase(new object[] { true, false }, true),
+                new TestCase(new object[] { true, true }, false),
+            }, "Bonus! Can you solve this problem without using the NOT operator?"),
+            new Problem("TRULY Epic", "As we all know, there is only one way to be TRULY epic. You must be a. Gay, b. a Ram Ranch Cowboy, and c. a Programmer. You are given three inputs, representing whether or not a person is Gay, a Ram Ranch Cowboy, and a Programmer, respectively. Your job is to determine and return whether or not the given person is TRULY epic.", "bool gay, bool ramRanch, bool programmer", "bool", new[]
+            {
+                new TestCase(new object[] { false, true, true }, false),
+                new TestCase(new object[] { false, true, false }, false),
+                new TestCase(new object[] { false, false, true }, false),
+                new TestCase(new object[] { false, false, false }, false),
+                new TestCase(new object[] { true, true, true }, true),
+                new TestCase(new object[] { true, true, false }, false),
+                new TestCase(new object[] { true, false, true }, false),
+                new TestCase(new object[] { true, false, false }, false),
+            }),
+            new Problem("Horse Girl", "You are given three inputs. The first represents whether or not a person is a horse, the second represents whether or not a person is a girl, and the third represents whether or not a person likes horses. You're job is to determine and return whether or not they are a horse girl, meaning a girl who either likes horses or is in fact a horse.", "bool horse, bool girl, bool likesHorses", "bool", new[]
+            {
+                new TestCase(new object[] { false, true, true }, true),
+                new TestCase(new object[] { false, true, false }, false),
+                new TestCase(new object[] { false, false, true }, false),
+                new TestCase(new object[] { false, false, false }, false),
+                new TestCase(new object[] { true, true, true }, true),
+                new TestCase(new object[] { true, true, false }, true),
+                new TestCase(new object[] { true, false, true }, false),
+                new TestCase(new object[] { true, false, false }, false),
+            }),
+            new Problem("Boomers", "Another true fact of life is that everybody who is at or over the age of twenty is a boomer. Given an input representing the age of a person, determine and return whether or not they are a boomer.", "int age", "bool", new[]
+            {
+                new TestCase(new object[] { 7 }, false),
+                new TestCase(new object[] { 15 }, false),
+                new TestCase(new object[] { 18 }, false),
+                new TestCase(new object[] { 19 }, false),
+                new TestCase(new object[] { 20 }, true),
+                new TestCase(new object[] { 21 }, true),
+                new TestCase(new object[] { 22 }, true),
+                new TestCase(new object[] { 30 }, true),
+                new TestCase(new object[] { 53 }, true),
+                new TestCase(new object[] { 75 }, true),
+                new TestCase(new object[] { 300 }, true),
+                new TestCase(new object[] { 2000 }, true),
+            }),
+            new Problem("Drinking Time", "Being a responsible parent, my children are only allowed to have three alcoholic drinks a day, and they're not allowed to drink in the morning. Given two inputs, the first representing how many drinks they've had and the second representing whether or not it's morning, return whether or not my children are allowed to drink.", "int drinks, bool isMorning", "bool", new[]
+            {
+                new TestCase(new object[] { 5, true }, false),
+                new TestCase(new object[] { 0, true }, false),
+                new TestCase(new object[] { 0, false }, true),
+                new TestCase(new object[] { 2, true }, false),
+                new TestCase(new object[] { 3, true }, false),
+                new TestCase(new object[] { 3, false }, false),
+                new TestCase(new object[] { 2, false }, true),
+                new TestCase(new object[] { 7, false }, false),
+                new TestCase(new object[] { 1, false }, true),
+            }),
+            new Problem("Zoomers", "Man, I can't believe zoomers are teenagers now! Given the age of a person, return whether or not they are a teenager.", "int age", "bool", new[]
+            {
+                new TestCase(new object[] { 9 }, false),
+                new TestCase(new object[] { 10 }, false),
+                new TestCase(new object[] { 11 }, false),
+                new TestCase(new object[] { 12 }, false),
+                new TestCase(new object[] { 13 }, true),
+                new TestCase(new object[] { 14 }, true),
+                new TestCase(new object[] { 15 }, true),
+                new TestCase(new object[] { 16 }, true),
+                new TestCase(new object[] { 17 }, true),
+                new TestCase(new object[] { 18 }, true),
+                new TestCase(new object[] { 19 }, true),
+                new TestCase(new object[] { 20 }, false),
+                new TestCase(new object[] { 21 }, false),
+                new TestCase(new object[] { 22 }, false),
+                new TestCase(new object[] { 23 }, false),
+                new TestCase(new object[] { 24 }, false),
+                new TestCase(new object[] { 25 }, false),
+            }),
+            new Problem ("Older Teenagers", "Oh wait, aren't people between 113 and 119 teenagers too? Given the age of a person, return whether or not they are either kind of teenager.", "int age", "bool", new[]
+            {
+                new TestCase(new object[] { 9 }, false),
+                new TestCase(new object[] { 10 }, false),
+                new TestCase(new object[] { 11 }, false),
+                new TestCase(new object[] { 12 }, false),
+                new TestCase(new object[] { 13 }, true),
+                new TestCase(new object[] { 14 }, true),
+                new TestCase(new object[] { 15 }, true),
+                new TestCase(new object[] { 16 }, true),
+                new TestCase(new object[] { 17 }, true),
+                new TestCase(new object[] { 18 }, true),
+                new TestCase(new object[] { 19 }, true),
+                new TestCase(new object[] { 20 }, false),
+                new TestCase(new object[] { 21 }, false),
+                new TestCase(new object[] { 22 }, false),
+                new TestCase(new object[] { 23 }, false),
+                new TestCase(new object[] { 24 }, false),
+                new TestCase(new object[] { 25 }, false),
+                new TestCase(new object[] { 109 }, false),
+                new TestCase(new object[] { 110 }, false),
+                new TestCase(new object[] { 111 }, false),
+                new TestCase(new object[] { 112 }, false),
+                new TestCase(new object[] { 113 }, true),
+                new TestCase(new object[] { 114 }, true),
+                new TestCase(new object[] { 115 }, true),
+                new TestCase(new object[] { 116 }, true),
+                new TestCase(new object[] { 117 }, true),
+                new TestCase(new object[] { 118 }, true),
+                new TestCase(new object[] { 119 }, true),
+                new TestCase(new object[] { 120 }, false),
+                new TestCase(new object[] { 121 }, false),
+                new TestCase(new object[] { 122 }, false),
+                new TestCase(new object[] { 123 }, false),
+                new TestCase(new object[] { 124 }, false),
+                new TestCase(new object[] { 125 }, false),
+            }),
+            new Problem("Money Printer", "Brrrrr. The US government is working on a new device and they need YOU to help complete it. This new device takes all of the money you currently have, and doubles it! You are given an input representing how much money somebody has. Return how much money the person will have after it goes through the money printer.", "int x", "int", new[] {
                 new TestCase(new object[] { 1 }, 2),
                 new TestCase(new object[] { 0 }, 0),
-                new TestCase(new object[] { -7 }, -14),
-                new TestCase(new object[] { 5 }, 10),
-                new TestCase(new object[] { 817 }, 1634),
-                new TestCase(new object[] { -51 }, -102),
-                new TestCase(new object[] { 42 }, 84),
-            }),
-            new Problem("Squares", "Return the input squared (hint: multiplied by itself).", "int x", "int", new[] {
+                new TestCase(new object[] { -700 }, -1400),
+                new TestCase(new object[] { 500 }, 1000),
+                new TestCase(new object[] { 81700 }, 163400),
+                new TestCase(new object[] { -5100 }, -10200),
+                new TestCase(new object[] { 4200 }, 8400),
+            }, "NOTE: Remember, this is America. People can very much have negative money."),
+            new Problem("Money Printer v2", "We've gone too deep in debt, the money printer needs to be upgraded! The new money printer will actually square a person (or government)'s money. Since the square of a negative number is positive, this could solve our debt crisis!", "int x", "int", new[] {
                 new TestCase(new object[] { 1 }, 1),
                 new TestCase(new object[] { 0 }, 0),
-                new TestCase(new object[] { -7 }, 49),
-                new TestCase(new object[] { -5 }, 25),
-                new TestCase(new object[] { 817 }, 667489),
-                new TestCase(new object[] { 4 }, 16),
-                new TestCase(new object[] { -21 }, 441),
-            }),
-            new Problem("Negatives", "Return the inverse of the input (hint: multiplied by -1).", "int x", "int", new[] {
+                new TestCase(new object[] { -700 }, 490000),
+                new TestCase(new object[] { -500 }, 250000),
+                new TestCase(new object[] { 8170 }, 66748900),
+                new TestCase(new object[] { 400 }, 160000),
+                new TestCase(new object[] { -2100 }, 4410000),
+            }, "Remember, to square a number is to multiply that number by itself."),
+            new Problem("Money Gun", "You've done your country proud, eternal president Obama thanks you for your service... But we'r e gonna need a money gun now so we can help out our allies and destroy our enemies. Given an input representing how much money our target has, return the inverse of that amount.", "int x", "int", new[] {
                 new TestCase(new object[] { 1 }, -1),
                 new TestCase(new object[] { 0 }, 0),
                 new TestCase(new object[] { -7 }, 7),
@@ -35,7 +166,7 @@ namespace CodingRange
                 new TestCase(new object[] { -523 }, 523),
                 new TestCase(new object[] { 375 }, -375),
                 new TestCase(new object[] { 23 }, -23),
-            }),
+            }, "Bonus! Can you do this without multiplying by negative one?"),
             new Problem("Order of Operations", "Add one to the input and return that new value multplied by negative two.", "int x", "int", new[] {
                 new TestCase(new object[] { 1 }, -4),
                 new TestCase(new object[] { 0 }, -2),
@@ -44,6 +175,91 @@ namespace CodingRange
                 new TestCase(new object[] { 817 }, -1636),
                 new TestCase(new object[] { 4 }, -10),
                 new TestCase(new object[] { 27 }, -54),
+            }, "I ran out of ideas for funny word problems, so the next few will be generic math questions. Sorry!"),
+            new Problem("Binomial Multiplication", "Given an input x, calculate and return y = (x + 2)(3x - 1).", "int x", "int", new[]
+            {
+                new TestCase(new object[] { 5 }, 98),
+                new TestCase(new object[] { -7 }, 110),
+                new TestCase(new object[] { 0 }, -2),
+                new TestCase(new object[] { 1 }, 6),
+                new TestCase(new object[] { -1 }, -4),
+                new TestCase(new object[] { 523}, 823200),
+                new TestCase(new object[] { -1024 }, 3140606),
+                new TestCase(new object[] { 96 }, 28126),
+                new TestCase(new object[] { 98 }, 29300),
+            }),
+            new Problem("Polynomial", "Given an input x, calculate and return y = 7x^5 + 4x^3 - 9x^2 + x - 27", "int x", "int", new[]
+            {
+                new TestCase(new object[] { 0 }, -27),
+                new TestCase(new object[] { 1 }, -24),
+                new TestCase(new object[] { -1 }, -48),
+                new TestCase(new object[] { 2 }, 195),
+                new TestCase(new object[] { 3 }, 1704),
+                new TestCase(new object[] { -5 }, -22632),
+                new TestCase(new object[] { -10 }, -704937),
+                new TestCase(new object[] { 7 }, 118560),
+            }),
+            new Problem("Addition", "Return the two inputs added together", "int x, int y", "int", new[]
+            {
+                new TestCase(new object[] { 0, 0 }, 0),
+                new TestCase(new object[] { -1, 0 }, -1),
+                new TestCase(new object[] { 0, 73 }, 73),
+                new TestCase(new object[] { 4, 4 }, 8),
+                new TestCase(new object[] { 91, 8 }, 99),
+                new TestCase(new object[] { -100, 1 }, -99),
+                new TestCase(new object[] { -75, -33 }, -108),
+                new TestCase(new object[] { 10383757, 5393826 }, 15777583),
+                new TestCase(new object[] { -30, -30 }, -60),
+            }),
+            new Problem("Division", "Return the first input divided by the second", "double x, double y", "double", new[] {
+                new TestCase(new object[] { 10, 5 }, 10D / 5),
+                new TestCase(new object[] { 72, 9 }, 72D / 9),
+                new TestCase(new object[] { -25, 5 }, -25D / 5),
+                new TestCase(new object[] { 33, 11 }, 33D / 11),
+                new TestCase(new object[] { 431156, 451 }, 431156D / 451),
+                new TestCase(new object[] { -3230, 34 }, -3230D / 34),
+                new TestCase(new object[] { 75, -5 }, 75D / -5),
+                new TestCase(new object[] { 5, 2 }, 5D / 2),
+                new TestCase(new object[] { 9.99, 3 }, 9.99D / 3),
+                new TestCase(new object[] { -32, 128 }, -32D / 128),
+                new TestCase(new object[] { 7, 0.5 }, 7D / 0.5),
+                new TestCase(new object[] { 0.283644, -1.6211 }, 0.283644 / -1.6211),
+            }),
+            new Problem("Circle", "Given the radius of a circle, calculate and return its area.", "double r", "double", new[]
+            {
+                new TestCase(new object[] { 0 }, 0 * 0 * Math.PI),
+                new TestCase(new object[] { 1 }, 1 * Math.PI),
+                new TestCase(new object[] { 7 }, 49 * Math.PI),
+                new TestCase(new object[] { 3 }, 9 * Math.PI),
+                new TestCase(new object[] { 1033 }, 1067089 * Math.PI),
+                new TestCase(new object[] { 51 }, 2601 * Math.PI),
+                new TestCase(new object[] { 2.5 }, 6.25 * Math.PI),
+            }, "If you add the line \"using System;\" at the top, you can use Math.PI anywhere in your code for a good approximation of pi."),
+            new Problem("Surface Area of a Sphere", "Given the **diameter** of a sphere, calculate and return its surface area", "int d", "int", new[]
+            {
+                new TestCase(new object[] { 0 }, 4 * Math.PI * 0 * 0),
+                new TestCase(new object[] { 8 }, 4 * Math.PI * 4 * 4),
+                new TestCase(new object[] { 16 }, 4 * Math.PI * 8 * 8),
+                new TestCase(new object[] { 36 }, 4 * Math.PI * 18 * 18),
+                new TestCase(new object[] { 60 }, 4 * Math.PI * 30 * 30),
+                new TestCase(new object[] { 48 }, 4 * Math.PI * 24 * 24),
+                new TestCase(new object[] { 900 }, 4 * Math.PI * 450 * 450),
+            }, "All inputs are even numbers... Dealing with test-cases for doubles is a hassle."),
+            new Problem("Distance Between Points", "Given inputs x1, y1, x2, and y2 representing two points, calculate and return the distance between the points.", "int x1, int y1, int x2, int y2", "double", new[]
+            {
+                new TestCase(new object[] { 2, 3, 4, 5 }, Math.Sqrt(Math.Pow(4 - 2, 2) + Math.Pow(5 - 3, 2))),
+                new TestCase(new object[] { -10, 7, 4, -3 }, Math.Sqrt(Math.Pow(4 + 10, 2) + Math.Pow(-3 - 7, 2))),
+                new TestCase(new object[] { 0, 0, 0, 0 }, Math.Sqrt(Math.Pow(0 - 0, 2) + Math.Pow(0 - 0, 2))),
+                new TestCase(new object[] { 0, 0, 0, 1 }, Math.Sqrt(Math.Pow(0 - 0, 2) + Math.Pow(1 - 0, 2))),
+            }, "You can use Math.Sqrt(x) to the square root of x, and Math.Pow(x, 2) to get x squared. Do not use x^2, as ^ actually refers to the XOR operator."),
+            new Problem("String Concatenation", "Given two strings, concatenate (add) them together and return the result.", "string x, string y", "string", new[]
+            {
+                new TestCase(new object[] {"Hello ", "World!"}, "Hello World!"),
+                new TestCase(new object[] {"Sometimes all I think about is ", "youuuuu"}, "Sometimes all I think about is youuuuu"),
+                new TestCase(new object[] {"Take me home", " down country roads"}, "Take me home down country roads"),
+                new TestCase(new object[] {"SomeBODY ", "once told me"}, "SomeBODY once told me"),
+                new TestCase(new object[] {"Never gonna give you up,", " never gonna let you down"}, "Never gonna give you up, never gonna let you down"),
+                new TestCase(new object[] {"Who lives in a ", "pineapple under the sea"}, "Who lives in a pineapple under the sea"),
             }),
         };
     }
