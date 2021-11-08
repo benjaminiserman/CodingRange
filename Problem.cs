@@ -61,7 +61,7 @@ namespace CodingRange
             int id = ProblemList.List.FindIndex(x => x.name == name);
 
             Console.WriteLine($"Problem {id}: {name}\nExpected method parameters: {expectedParameters}\nExpected output type: {expectedOutput}\n\nInstructions:\n\n{description}");
-            if (!string.IsNullOrWhiteSpace(specialNotes)) Console.WriteLine(specialNotes);
+            if (!string.IsNullOrWhiteSpace(specialNotes)) Console.WriteLine($"\n{specialNotes}");
         }
 
         private static string ArrayToString(object[] array)
