@@ -24,7 +24,7 @@ namespace CodingRange
 
         public void Evaluate(MethodInfo method)
         {
-            Console.WriteLine("Output:\n");
+            Console.WriteLine("\nOutput:\n");
 
             foreach (var @case in testCases)
             {
@@ -60,7 +60,7 @@ namespace CodingRange
         {
             int id = ProblemList.List.FindIndex(x => x.name == name);
 
-            Console.WriteLine($"Problem {id}: {name}\nExpected method parameters: {expectedParameters}\nExpected output type: {expectedOutput}\n\nInstructions:\n\n{description}\n");
+            Console.WriteLine($"Problem {id}: {name}\nExpected method parameters: {expectedParameters}\nExpected output type: {expectedOutput}\n\nInstructions:\n\n{description}");
             if (!string.IsNullOrWhiteSpace(specialNotes)) Console.WriteLine(specialNotes);
         }
 
