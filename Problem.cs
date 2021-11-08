@@ -7,16 +7,16 @@ namespace CodingRange
     {
         readonly string name;
         readonly string description;
-        readonly string expectedSignature;
+        readonly string expectedParameters;
         readonly string expectedOutput;
         readonly TestCase[] testCases;
         readonly string specialNotes;
 
-        public Problem(string name, string description, string expectedSignature, string expectedOutput, TestCase[] testCases, string specialNotes = null)
+        public Problem(string name, string description, string expectedParameters, string expectedOutput, TestCase[] testCases, string specialNotes = null)
         {
             this.name = name;
             this.description = description;
-            this.expectedSignature = expectedSignature;
+            this.expectedParameters = expectedParameters;
             this.expectedOutput = expectedOutput;
             this.testCases = testCases;
             this.specialNotes = specialNotes;
@@ -24,6 +24,8 @@ namespace CodingRange
 
         public void Evaluate(MethodInfo method)
         {
+            Console.WriteLine("Output:\n");
+
             foreach (var @case in testCases)
             {
                 object result;
@@ -39,7 +41,7 @@ namespace CodingRange
                 }
                 catch (ArgumentException)
                 {
-                    Console.WriteLine($"Error! An ArgumentException was thrown... This may be due to an error in your method signature. Does it match \"{expectedSignature}\"?");
+                    Console.WriteLine($"Error! An ArgumentException was thrown... This may be due to an error in your method signature. Does it match \"{expectedParameters}\"?");
                     throw;
                 }
 
@@ -58,7 +60,7 @@ namespace CodingRange
         {
             int id = ProblemList.List.FindIndex(x => x.name == name);
 
-            Console.WriteLine($"Problem {id}: {name}\nInstructions:\n\n{description}\n\nExpected method signature: {expectedSignature}\nExpected output type: {expectedOutput}\n");
+            Console.WriteLine($"Problem {id}: {name}\nExpected method parameters: {expectedParameters}\nExpected output type: {expectedOutput}\n\nInstructions:\n\n{description}\n");
             if (!string.IsNullOrWhiteSpace(specialNotes)) Console.WriteLine(specialNotes);
         }
 
