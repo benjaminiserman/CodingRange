@@ -15,26 +15,19 @@ namespace CodingRange
             new Problem("Hello World", "Return the string \"Hello World!\".", "(no parameters)", "string", new[] { 
                 new TestCase(null, "Hello World!")
             }),
-            new Problem("Cringe?", "Given a boolean representing whether or not a person is epic, return a boolean representing whether or not they are cringe (NOT epic).", "bool x", "bool", new[]
+            new Problem("Cringe?", "Given an input representing whether or not a person is epic, return a boolean representing whether or not they are cringe (NOT epic).", "bool x", "bool", new[]
             {
                 new TestCase(new object[] { true }, false),
                 new TestCase(new object[] { false }, true),
             }),
-            new Problem("Pills", "You are given two booleans, the first represents whether or not a person is red-pilled. The second represents whether or not a person is blue-pilled. We don't care about colors, so just return whether or not they are pilled at all.", "bool redPilled, bool bluePilled", "bool", new[]
+            new Problem("Pills", "You are given two inputs, the first represents whether or not a person is red-pilled. The second represents whether or not a person is blue-pilled. We don't care about colors, so just return whether or not they are pilled at all.", "bool redPilled, bool bluePilled", "bool", new[]
             {
                 new TestCase(new object[] { false, false }, false),
                 new TestCase(new object[] { false, true }, true),
                 new TestCase(new object[] { true, false }, true),
                 new TestCase(new object[] { true, true }, true),
             }),
-            new Problem("Cat Person", "You are given two inputs. The first is a boolean representing whether or not a person in question owns a cat.\nThe second refers to whether or not a person owns a dog. Return whether or not the person is a cat person, meaning they own a cat but not a dog.", "bool cat, bool dog", "bool", new[]
-            {
-                new TestCase(new object[] { false, false }, false),
-                new TestCase(new object[] { false, true }, false),
-                new TestCase(new object[] { true, false }, true),
-                new TestCase(new object[] { true, true }, false),
-            }, "Bonus! Can you solve this problem without using the NOT operator?"),
-            new Problem("TRULY Epic", "As we all know, there is only one way to be TRULY epic. You must be a. Gay, b. a Ram Ranch Cowboy, and c. a Programmer. You are given three inputs, representing whether or not a person is Gay, a Ram Ranch Cowboy, and a Programmer, respectively. Your job is to determine and return whether or not the given person is TRULY epic.", "bool gay, bool ramRanch, bool programmer", "bool", new[]
+            new Problem("TRULY Epic", "As we all know, there is only one way to be TRULY epic. You must be a. Gay, b. a Ram Ranch Cowboy, AND c. a Programmer. You are given three inputs, representing whether or not a person is Gay, a Ram Ranch Cowboy, and a Programmer, respectively. Your job is to determine and return whether or not the given person is TRULY epic.", "bool gay, bool ramRanch, bool programmer", "bool", new[]
             {
                 new TestCase(new object[] { false, true, true }, false),
                 new TestCase(new object[] { false, true, false }, false),
@@ -45,7 +38,28 @@ namespace CodingRange
                 new TestCase(new object[] { true, false, true }, false),
                 new TestCase(new object[] { true, false, false }, false),
             }),
-            new Problem("Horse Girl", "You are given three inputs. The first represents whether or not a person is a horse, the second represents whether or not a person is a girl, and the third represents whether or not a person likes horses. You're job is to determine and return whether or not they are a horse girl, meaning a girl who either likes horses or is in fact a horse.", "bool horse, bool girl, bool likesHorses", "bool", new[]
+            new Problem("Cat Person", "You are given two inputs. The first is a boolean representing whether or not a person in question owns a cat.\nThe second refers to whether or not a person owns a dog. Return whether or not the person is a cat person, meaning they own a cat but not a dog.", "bool cat, bool dog", "bool", new[]
+            {
+                new TestCase(new object[] { false, false }, false),
+                new TestCase(new object[] { false, true }, false),
+                new TestCase(new object[] { true, false }, true),
+                new TestCase(new object[] { true, true }, false),
+            }, "Bonus! Can you solve this problem without using the NOT operator?"),
+            new Problem("Matchmaking <3", "A wise man once said, \"A relationship can only succeed if both partners have the same opinion on whether or not popcorn is tasty.\" This is of course, a true fact of life. Given two inputs, the first representing whether or not the first partner likes popcorn, and the second representing whether or not the second partner likes popcorn, determine whether or not this couple is truly meant to be.", "bool heLiksPopcorn, bool sheLikesPopcorn", "bool", new[]
+            {
+                new TestCase(new object[] { false, false }, true),
+                new TestCase(new object[] { false, true }, false),
+                new TestCase(new object[] { true, false }, false),
+                new TestCase(new object[] { true, true }, true),
+            }),
+            new Problem("Pills 2", "Alright, now we care about pill colors. In the spirit of Mr. Lamers, this time we only want to accept purple-pilled people. You are given two inputs, the first represents whether or not a person is red-pilled. The second represents whether or not a person is blue-pilled. Return whether or not the person in question is purple-pilled (both red and blue pilled).", "bool redPilled, bool bluePilled","bool", new[]
+            {
+                new TestCase(new object[] { false, false }, false),
+                new TestCase(new object[] { false, true }, false),
+                new TestCase(new object[] { true, false }, false),
+                new TestCase(new object[] { true, true }, true),
+            }),
+            new Problem("Horse Girl", "You are given three inputs. The first represents whether or not a person is a horse, the second represents whether or not a person is a girl, and the third represents whether or not a person likes horses. Your job is to determine and return whether or not they are a horse girl, meaning a girl who either likes horses or is in fact a horse.", "bool horse, bool girl, bool likesHorses", "bool", new[]
             {
                 new TestCase(new object[] { false, true, true }, true),
                 new TestCase(new object[] { false, true, false }, false),
@@ -71,17 +85,20 @@ namespace CodingRange
                 new TestCase(new object[] { 300 }, true),
                 new TestCase(new object[] { 2000 }, true),
             }),
-            new Problem("Drinking Time", "Being a responsible parent, my children are only allowed to have three alcoholic drinks a day, and they're not allowed to drink in the morning. Given two inputs, the first representing how many drinks they've had and the second representing whether or not it's morning, return whether or not my children are allowed to drink.", "int drinks, bool isMorning", "bool", new[]
+            new Problem("Vibes", "Good vibes only! Given an integer input in the range [-100, 100] representing how good a person's vibes are, return whether or not they have good (positive, non-zero) vibes.", "int vibe", "bool", new[]
             {
-                new TestCase(new object[] { 5, true }, false),
-                new TestCase(new object[] { 0, true }, false),
-                new TestCase(new object[] { 0, false }, true),
-                new TestCase(new object[] { 2, true }, false),
-                new TestCase(new object[] { 3, true }, false),
-                new TestCase(new object[] { 3, false }, false),
-                new TestCase(new object[] { 2, false }, true),
-                new TestCase(new object[] { 7, false }, false),
-                new TestCase(new object[] { 1, false }, true),
+                new TestCase(new object[] { -74 }, false),
+                new TestCase(new object[] { 15 }, true),
+                new TestCase(new object[] { 0 }, false),
+                new TestCase(new object[] { 100 }, true),
+                new TestCase(new object[] { 39 }, true),
+                new TestCase(new object[] { 1 }, true),
+                new TestCase(new object[] { -1 }, false),
+                new TestCase(new object[] { 2 }, true),
+                new TestCase(new object[] { -45 }, false),
+                new TestCase(new object[] { -100 }, false),
+                new TestCase(new object[] { -69 }, false),
+                new TestCase(new object[] { 69 }, true),
             }),
             new Problem("Zoomers", "Man, I can't believe zoomers are teenagers now! Given the age of a person, return whether or not they are a teenager.", "int age", "bool", new[]
             {
@@ -103,6 +120,35 @@ namespace CodingRange
                 new TestCase(new object[] { 24 }, false),
                 new TestCase(new object[] { 25 }, false),
             }),
+            new Problem("Drinking Time", "Being a responsible parent, my children are only allowed to have three alcoholic drinks a day, and they're not allowed to drink in the morning. Given two inputs, the first representing how many drinks they've had and the second representing whether or not it's morning, return whether or not my children are allowed to drink.", "int drinks, bool isMorning", "bool", new[]
+            {
+                new TestCase(new object[] { 5, true }, false),
+                new TestCase(new object[] { 0, true }, false),
+                new TestCase(new object[] { 0, false }, true),
+                new TestCase(new object[] { 2, true }, false),
+                new TestCase(new object[] { 3, true }, false),
+                new TestCase(new object[] { 3, false }, false),
+                new TestCase(new object[] { 2, false }, true),
+                new TestCase(new object[] { 7, false }, false),
+                new TestCase(new object[] { 1, false }, true),
+            }),
+            new Problem ("Kinsey Scale", "A beautiful example of progress in our society is the fact that a person who experiences ANY homosexual thoughts can achieve the illustrious title of Gay. Given two inputs, one being a person's Kinsey scale rating (an integer in the range [0, 6], with 0 representing exclusively heterosexual and 6 representing exclusively homosexual) and the other whether or not a person believes they can achieve gaydom, determine whether or not that person is correct in their self-assessment.", "int kinseyScale, bool gay", "bool", new[]
+            {
+                new TestCase(new object[] { 0, true }, false),
+                new TestCase(new object[] { 1, true }, true),
+                new TestCase(new object[] { 2, true }, true),
+                new TestCase(new object[] { 3, true }, true),
+                new TestCase(new object[] { 4, true }, true),
+                new TestCase(new object[] { 5, true }, true),
+                new TestCase(new object[] { 6, true }, true),
+                new TestCase(new object[] { 0, false }, true),
+                new TestCase(new object[] { 1, false }, false),
+                new TestCase(new object[] { 2, false }, false),
+                new TestCase(new object[] { 3, false }, false),
+                new TestCase(new object[] { 4, false }, false),
+                new TestCase(new object[] { 5, false }, false),
+                new TestCase(new object[] { 6, false }, false),
+            }, "Note: This has nothing to do with a person's self-identity, but rather whether or not they could honestly identify as gay. Sad 0 Kinsey rating individuals like myself can only be an honorary gay at best."),
             new Problem ("Older Teenagers", "Oh wait, aren't people between 113 and 119 teenagers too? Given the age of a person, return whether or not they are either kind of teenager.", "int age", "bool", new[]
             {
                 new TestCase(new object[] { 9 }, false),
@@ -140,7 +186,8 @@ namespace CodingRange
                 new TestCase(new object[] { 124 }, false),
                 new TestCase(new object[] { 125 }, false),
             }),
-            new Problem("Money Printer", "Brrrrr. The US government is working on a new device and they need YOU to help complete it. This new device takes all of the money you currently have, and doubles it! You are given an input representing how much money somebody has. Return how much money the person will have after it goes through the money printer.", "int x", "int", new[] {
+            new Problem("Money Printer", "Brrrrr. The US government is working on a new device and they need YOU to help complete it. This new device takes all of the money you currently have, and doubles it! You are given an input representing how much money somebody has. Return how much money the person will have after it goes through the money printer.", "int x", "int", new[] 
+            {
                 new TestCase(new object[] { 1 }, 2),
                 new TestCase(new object[] { 0 }, 0),
                 new TestCase(new object[] { -700 }, -1400),
@@ -149,7 +196,8 @@ namespace CodingRange
                 new TestCase(new object[] { -5100 }, -10200),
                 new TestCase(new object[] { 4200 }, 8400),
             }, "NOTE: Remember, this is America. People can very much have negative money."),
-            new Problem("Money Printer v2", "We've gone too deep in debt, the money printer needs to be upgraded! The new money printer will actually square a person (or government)'s money. Since the square of a negative number is positive, this could solve our debt crisis!", "int x", "int", new[] {
+            new Problem("Money Printer v2", "We've gone too deep in debt, the money printer needs to be upgraded! The new money printer will actually square a person (or government)'s money. Since the square of a negative number is positive, this could solve our debt crisis!", "int x", "int", new[] 
+            {
                 new TestCase(new object[] { 1 }, 1),
                 new TestCase(new object[] { 0 }, 0),
                 new TestCase(new object[] { -700 }, 490000),
@@ -158,7 +206,8 @@ namespace CodingRange
                 new TestCase(new object[] { 400 }, 160000),
                 new TestCase(new object[] { -2100 }, 4410000),
             }, "Remember, to square a number is to multiply that number by itself."),
-            new Problem("Money Gun", "You've done your country proud, eternal president Obama thanks you for your service... But we'r e gonna need a money gun now so we can help out our allies and destroy our enemies. Given an input representing how much money our target has, return the inverse of that amount.", "int x", "int", new[] {
+            new Problem("Money Gun", "You've done your country proud, eternal president Obama thanks you for your service... But we'r e gonna need a money gun now so we can help out our allies and destroy our enemies. Given an input representing how much money our target has, return the inverse of that amount.", "int x", "int", new[] 
+            {
                 new TestCase(new object[] { 1 }, -1),
                 new TestCase(new object[] { 0 }, 0),
                 new TestCase(new object[] { -7 }, 7),
@@ -167,7 +216,28 @@ namespace CodingRange
                 new TestCase(new object[] { 375 }, -375),
                 new TestCase(new object[] { 23 }, -23),
             }, "Bonus! Can you do this without multiplying by negative one?"),
-            new Problem("Order of Operations", "Add one to the input and return that new value multplied by negative two.", "int x", "int", new[] {
+            new Problem("Cult of Dionysus", "According to the Orion Experience song \"Cult of Dionysus\", the couple in question created their cult because he was feeling devious and she thought he was looking glamorous. You are given two inputs: one representing whether or not he feels devious, and the other representing whether or not she thinks he looks glamorous. Return whether or not these two are ready to create the Cult of Dionysus.", "bool feelingDevious, bool lookingGlamorous", "bool", new[]
+            {
+                new TestCase(new object[] { false, false }, false),
+                new TestCase(new object[] { false, true }, false),
+                new TestCase(new object[] { true, false }, false),
+                new TestCase(new object[] { true, true }, true),
+            }),
+            new Problem("Carrying", "Carry the team! A person is carrying the team if their score is at least double the score of the team's second-place player. Given two integer inputs, the first representing the top player's score, and the second representing the second-place player's score, determine and return whether or not the top player is carrying the team. Both scores will always be positive, and the top player's score will always be greater than the second-place player's score.", "int topScore, int secondScore", "bool", new[]
+            {
+                new TestCase(new object[] { 100, 0 }, true),
+                new TestCase(new object[] { 30, 20 }, false),
+                new TestCase(new object[] { 100, 50 }, true),
+                new TestCase(new object[] { 2, 1 }, true),
+                new TestCase(new object[] { 1, 0 }, true),
+                new TestCase(new object[] { 1999, 1000 }, false),
+                new TestCase(new object[] { 2000, 1000 }, true),
+                new TestCase(new object[] { 100, 51 }, false),
+                new TestCase(new object[] { 16, 15 }, false),
+                new TestCase(new object[] { 200, 175 }, false),
+            }),
+            new Problem("Order of Operations", "Add one to the input and return that new value multplied by negative two.", "int x", "int", new[] 
+            {
                 new TestCase(new object[] { 1 }, -4),
                 new TestCase(new object[] { 0 }, -2),
                 new TestCase(new object[] { -7 }, 12),
@@ -211,7 +281,8 @@ namespace CodingRange
                 new TestCase(new object[] { 10383757, 5393826 }, 15777583),
                 new TestCase(new object[] { -30, -30 }, -60),
             }),
-            new Problem("Division", "Return the first input divided by the second", "double x, double y", "double", new[] {
+            new Problem("Division", "Return the first input divided by the second", "double x, double y", "double", new[] 
+            {
                 new TestCase(new object[] { 10, 5 }, 10D / 5),
                 new TestCase(new object[] { 72, 9 }, 72D / 9),
                 new TestCase(new object[] { -25, 5 }, -25D / 5),
