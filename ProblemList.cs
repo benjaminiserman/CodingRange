@@ -407,7 +407,7 @@ namespace CodingRange
                 new TestCase(new object[] {"SomeBODY ", "once told me"}, "SomeBODY once told me"),
                 new TestCase(new object[] {"Never gonna give you up,", " never gonna let you down"}, "Never gonna give you up, never gonna let you down"),
                 new TestCase(new object[] {"Who lives in a ", "pineapple under the sea"}, "Who lives in a pineapple under the sea"),
-            }),
+            }, "Bonus! Can you do this using interpolated strings?"),
             // 33
             new Problem("Allergens", "You are trying to get the allergen information for a meal. The API has returned two strings, each of the form \"contains x\". Please concatenate the two strings together, but with the second \"contains\" replaced with \"and\".", "string first, string second", "string", new[]
             {
