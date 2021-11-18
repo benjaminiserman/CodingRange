@@ -387,11 +387,11 @@ namespace CodingRange
                 new TestCase(new object[] { "epic! reeeeeeeeeeeeeeeeee" }, "reeeeeeeeeeeeeeeeee"),
             }),
             // 31
-            new Problem("More Middle", "Sometimes, we want to get both of the middle characters", "string x", "string", new[]
+            new Problem("More Middle", "Sometimes, we want to get both of the middle characters. Given a string of even length, return the substring containing the middle two characters.", "string x", "string", new[]
             {
-               new TestCase(new object[] { "tacocat" }, "o"), 
-               new TestCase(new object[] { "racecar" }, "e"), 
-               new TestCase(new object[] { "dad" }, "a"), 
+               new TestCase(new object[] { "tacocats" }, "oc"), 
+               new TestCase(new object[] { "racecars" }, "ec"), 
+               new TestCase(new object[] { "dads" }, "ad"), 
                new TestCase(new object[] { "Anna" }, "nn"), 
                new TestCase(new object[] { "noon" }, "oo"), 
                new TestCase(new object[] { "rawr" }, "aw"), 
