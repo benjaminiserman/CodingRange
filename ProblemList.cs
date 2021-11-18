@@ -418,7 +418,7 @@ namespace CodingRange
                 new TestCase(new object[] { "contains peanuts", "contains tree nuts" }, "contains peanuts and tree nuts"),
                 new TestCase(new object[] { "contains wheat", "contains fish" }, "contains wheat and fish"),
                 new TestCase(new object[] { "contains rhinoceros horn", "contains unicorn tears" }, "contains rhinoceros horn and unicorn tears"),
-            }, "For example: given first = \"contains peanuts\" and second = \"contains soy\", return \"contains peanuts and soy\". (this is based off of a real problem I had to solve!)"),
+            }, "For example: given first = \"contains peanuts\" and second = \"contains soy\", return \"contains peanuts and soy\". (this is based off of a real problem I had to solve!)\nBonus! Can you solve this using interpolated strings instead of string concatenation?"),
         };
     }
 }
