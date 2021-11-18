@@ -354,9 +354,9 @@ namespace CodingRange
                 new TestCase(new object[] { "Mellow World?" }, 'M'),
                 new TestCase(new object[] { "Bellow World..." }, 'B'),
                 new TestCase(new object[] { "..-. . .-.. .-.. --- .-- / .-- --- .-. .-.. -.." }, '.'),
-                new TestCase(new object[] { "01101001 00100111 01101101 00100000 01101111 01110101 01110100 00100000 01101111 01100110 00100000 01110010 01101000 01111001 01101101 01100101 01110011", '0'}),
+                new TestCase(new object[] { "01101001 00100111 01101101 00100000 01101111 01110101 01110100 00100000 01101111 01100110 00100000 01110010 01101000 01111001 01101101 01100101 01110011" }, '0'),
                 new TestCase(new object[] { "rip" }, 'r'),
-            })
+            }),
             // 28
             new Problem ("Last!", "Alright, now do it with the last character instead. Given a string input, return the last character of the string.", "string x", "char", new[]
             {
@@ -364,9 +364,9 @@ namespace CodingRange
                 new TestCase(new object[] { "Mellow World?" }, '?'),
                 new TestCase(new object[] { "Bellow World..." }, '.'),
                 new TestCase(new object[] { "..-. . .-.. .-.. --- .-- / .-- --- .-. .-.. -.." }, '.'),
-                new TestCase(new object[] { "01101001 00100111 01101101 00100000 01101111 01110101 01110100 00100000 01101111 01100110 00100000 01110010 01101000 01111001 01101101 01100101 01110011", '1'}),
+                new TestCase(new object[] { "01101001 00100111 01101101 00100000 01101111 01110101 01110100 00100000 01101111 01100110 00100000 01110010 01101000 01111001 01101101 01100101 01110011" }, '1'),
                 new TestCase(new object[] { "rip" }, 'p'),
-            })
+            }),
             // 29
             new Problem("Middle?", "Alright those were too easy, let's make it a bit harder. Given a string of non-zero length, return the *middle* character of the string. If a string is of even length, choose the left of the two middle characters.", "string x", "char", new[]
             {
@@ -409,7 +409,7 @@ namespace CodingRange
                 new TestCase(new object[] {"Who lives in a ", "pineapple under the sea"}, "Who lives in a pineapple under the sea"),
             }),
             // 33
-            new Problem("Allergens", "You are trying to get the allergen information for a meal. The API has returned two strings, each of the form \"contains x\". Please concatenate the two strings together, but with the second \"contains\" replaced with \"and\".", new[]
+            new Problem("Allergens", "You are trying to get the allergen information for a meal. The API has returned two strings, each of the form \"contains x\". Please concatenate the two strings together, but with the second \"contains\" replaced with \"and\".", "string first, string second", "string", new[]
             {
                 new TestCase(new object[] { "contains peanuts", "contains soy" }, "contains peanuts and soy"),
                 new TestCase(new object[] { "contains milk", "contains soy" }, "contains milk and soy"),
