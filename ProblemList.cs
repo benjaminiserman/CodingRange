@@ -305,7 +305,7 @@ namespace CodingRange
                 new TestCase(new object[] { -30, -30 }, -60),
             }),
             // 23
-            new Problem("Division", "Return the first input divided by the second", "double x, double y", "double", new[] 
+            new Problem("Division", "Return the first input divided by the second", "int x, int y", "double", new[] 
             {
                 new TestCase(new object[] { 10, 5 }, 10D / 5),
                 new TestCase(new object[] { 72, 9 }, 72D / 9),
@@ -315,10 +315,7 @@ namespace CodingRange
                 new TestCase(new object[] { -3230, 34 }, -3230D / 34),
                 new TestCase(new object[] { 75, -5 }, 75D / -5),
                 new TestCase(new object[] { 5, 2 }, 5D / 2),
-                new TestCase(new object[] { 9.99, 3 }, 9.99D / 3),
                 new TestCase(new object[] { -32, 128 }, -32D / 128),
-                new TestCase(new object[] { 7, 0.5 }, 7D / 0.5),
-                new TestCase(new object[] { 0.283644, -1.6211 }, 0.283644 / -1.6211),
             }),
             // 24
             new Problem("Circle", "Given the radius of a circle, calculate and return its area.", "double r", "double", new[]
