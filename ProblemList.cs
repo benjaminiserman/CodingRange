@@ -329,7 +329,7 @@ namespace CodingRange
                 new TestCase(new object[] { 2.5 }, 6.25 * Math.PI),
             }, "If you add the line \"using System;\" at the top, you can use Math.PI anywhere in your code for a good approximation of pi."),
             // 25
-            new Problem("Surface Area of a Sphere", "Given the **diameter** of a sphere, calculate and return its surface area", "int d", "int", new[]
+            new Problem("Surface Area of a Sphere", "Given the **diameter** of a sphere, calculate and return its surface area", "double d", "double", new[]
             {
                 new TestCase(new object[] { 0 }, 4 * Math.PI * 0 * 0),
                 new TestCase(new object[] { 8 }, 4 * Math.PI * 4 * 4),
