@@ -348,6 +348,57 @@ namespace CodingRange
                 new TestCase(new object[] { 0, 0, 0, 1 }, Math.Sqrt(Math.Pow(0 - 0, 2) + Math.Pow(1 - 0, 2))),
             }, "You can use Math.Sqrt(x) to the square root of x, and Math.Pow(x, 2) to get x squared. Do not use x^2, as ^ actually refers to the XOR operator."),
             // 27
+            new Problem("First!", "You know this dude on tinder once wrote a poem where if you combined the first letter of each line it said a uhh... interesting message. Let's do that here! Given a string input, return the first character of the string.", "string x", "char", new[]
+            {
+                new TestCase(new object[] { "Hello World!" }, 'H'),
+                new TestCase(new object[] { "Mellow World?" }, 'M'),
+                new TestCase(new object[] { "Bellow World..." }, 'B'),
+                new TestCase(new object[] { "..-. . .-.. .-.. --- .-- / .-- --- .-. .-.. -.." }, '.'),
+                new TestCase(new object[] { "01101001 00100111 01101101 00100000 01101111 01110101 01110100 00100000 01101111 01100110 00100000 01110010 01101000 01111001 01101101 01100101 01110011", '0'}),
+                new TestCase(new object[] { "rip" }, 'r'),
+            })
+            // 28
+            new Problem ("Last!", "Alright, now do it with the last character instead. Given a string input, return the last character of the string.", "string x", "char", new[]
+            {
+                new TestCase(new object[] { "Hello World!" }, '!'),
+                new TestCase(new object[] { "Mellow World?" }, '?'),
+                new TestCase(new object[] { "Bellow World..." }, '.'),
+                new TestCase(new object[] { "..-. . .-.. .-.. --- .-- / .-- --- .-. .-.. -.." }, '.'),
+                new TestCase(new object[] { "01101001 00100111 01101101 00100000 01101111 01110101 01110100 00100000 01101111 01100110 00100000 01110010 01101000 01111001 01101101 01100101 01110011", '1'}),
+                new TestCase(new object[] { "rip" }, 'p'),
+            })
+            // 29
+            new Problem("Middle?", "Alright those were too easy, let's make it a bit harder. Given a string of non-zero length, return the *middle* character of the string. If a string is of even length, choose the left of the two middle characters.", "string x", "char", new[]
+            {
+               new TestCase(new object[] { "tacocat" }, 'o'), 
+               new TestCase(new object[] { "racecar" }, 'e'), 
+               new TestCase(new object[] { "dad" }, 'a'), 
+               new TestCase(new object[] { "Anna" }, 'n'), 
+               new TestCase(new object[] { "noon" }, 'o'), 
+               new TestCase(new object[] { "reeeeeeeeeeeeeeeeeeeeeeeeeeeee" }, 'e'), 
+            }),
+            // 30
+            new Problem("Epic", "Oh my god, did you know there are still people in *2021* that say epic!? This guy literally writes \"epic! \" at the start of every single one of his messages. Given an input representing this fool's message, return the message but without the \"epic! \" at the start.", "string epic", "string", new[]
+            {
+                new TestCase(new object[] { "epic! I love cats!!!" }, "I love cats!!!"),
+                new TestCase(new object[] { "epic! you are sooooooo cool!" }, "you are sooooooo cool!"),
+                new TestCase(new object[] { "epic! epic!" }, "epic!"),
+                new TestCase(new object[] { "epic! I should touch grass and stop saying epic!" }, "I should touch grass and stop saying epic!"),
+                new TestCase(new object[] { "epic! reeeeeeeeeeeeeeeeee" }, "reeeeeeeeeeeeeeeeee"),
+            }),
+            // 31
+            new Problem("More Middle", "Sometimes, we want to get both of the middle characters", "string x", "string", new[]
+            {
+               new TestCase(new object[] { "tacocat" }, "o"), 
+               new TestCase(new object[] { "racecar" }, "e"), 
+               new TestCase(new object[] { "dad" }, "a"), 
+               new TestCase(new object[] { "Anna" }, "nn"), 
+               new TestCase(new object[] { "noon" }, "oo"), 
+               new TestCase(new object[] { "rawr" }, "aw"), 
+               new TestCase(new object[] { "Hello!" }, "ll"), 
+               new TestCase(new object[] { "doge" }, "og"), 
+            }),
+            // 32
             new Problem("String Concatenation", "Given two strings, concatenate (add) them together and return the result.", "string x, string y", "string", new[]
             {
                 new TestCase(new object[] {"Hello ", "World!"}, "Hello World!"),
@@ -357,6 +408,17 @@ namespace CodingRange
                 new TestCase(new object[] {"Never gonna give you up,", " never gonna let you down"}, "Never gonna give you up, never gonna let you down"),
                 new TestCase(new object[] {"Who lives in a ", "pineapple under the sea"}, "Who lives in a pineapple under the sea"),
             }),
+            // 33
+            new Problem("Allergens", "You are trying to get the allergen information for a meal. The API has returned two strings, each of the form \"contains x\". Please concatenate the two strings together, but with the second \"contains\" replaced with \"and\".", new[]
+            {
+                new TestCase(new object[] { "contains peanuts", "contains soy" }, "contains peanuts and soy"),
+                new TestCase(new object[] { "contains milk", "contains soy" }, "contains milk and soy"),
+                new TestCase(new object[] { "contains milk", "contains peanuts" }, "contains milk and peanuts"),
+                new TestCase(new object[] { "contains soy", "contains peanuts" }, "contains soy and peanuts"),
+                new TestCase(new object[] { "contains peanuts", "contains tree nuts" }, "contains peanuts and tree nuts"),
+                new TestCase(new object[] { "contains wheat", "contains fish" }, "contains wheat and fish"),
+                new TestCase(new object[] { "contains rhinoceros horn", "contains unicorn tears" }, "contains rhinoceros horn and unicorn tears"),
+            }, "For example: given first = \"contains peanuts\" and second = \"contains soy\", return \"contains peanuts and soy\". (this is based off of a real problem I had to solve!)"),
         };
     }
 }
