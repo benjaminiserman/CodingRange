@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Linq;
 
 namespace CodingRange
 {
@@ -61,6 +62,23 @@ namespace CodingRange
             int id = ProblemList.List.FindIndex(x => x.name == name);
 
             Console.WriteLine($"Problem {id}: {name}\nExpected method parameters: {expectedParameters}\nExpected output type: {expectedOutput}\n\nInstructions:\n\n{description}");
+            if (testCases[0].inputs != null)
+            {
+                TestCase @case;
+                if (testCases[0].expectedOutput is bool)
+                {
+                    @case = testCases.First(x => (bool)x.expectedOutput);
+                    Console.WriteLine($"\nExample: {{ {ArrayToString(@case.inputs)} }} => {@case.expectedOutput}");
+
+                    @case = testCases.First(x => !(bool)x.expectedOutput);
+                    Console.WriteLine($"\nExample: {{ {ArrayToString(@case.inputs)} }} => {@case.expectedOutput}");
+                }
+                else
+                {
+                    @case = testCases[0];
+                    Console.WriteLine($"\nExample: {{ {ArrayToString(@case.inputs)} }} => {@case.expectedOutput}");
+                }
+            }
             if (!string.IsNullOrWhiteSpace(specialNotes)) Console.WriteLine($"\n{specialNotes}");
         }
 
