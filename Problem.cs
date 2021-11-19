@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 
@@ -49,7 +50,7 @@ namespace CodingRange
                 if (!result.Equals(@case.expectedOutput))
                 {
                     if (@case.inputs == null || @case.inputs.Length == 0) Console.WriteLine($"Error!\nGot: {result}\nExpected: {@case.expectedOutput}");
-                    else Console.WriteLine($"Error!\nInputs: {{ {ArrayToString(@case.inputs)} }}\nGot: {result}\nExpected: {@case.expectedOutput}");
+                    else Console.WriteLine($"Error!\nInputs: {{ {CollectionToString(@case.inputs)} }}\nGot: {result}\nExpected: {@case.expectedOutput}");
                     return;
                 }
             }
@@ -68,21 +69,21 @@ namespace CodingRange
                 if (testCases[0].expectedOutput is bool)
                 {
                     @case = testCases.First(x => (bool)x.expectedOutput);
-                    Console.WriteLine($"\nExample: {{ {ArrayToString(@case.inputs)} }} => {@case.expectedOutput}");
+                    Console.WriteLine($"\nExample: {{ {CollectionToString(@case.inputs)} }} => {@case.expectedOutput}");
 
                     @case = testCases.First(x => !(bool)x.expectedOutput);
-                    Console.WriteLine($"\nExample: {{ {ArrayToString(@case.inputs)} }} => {@case.expectedOutput}");
+                    Console.WriteLine($"\nExample: {{ {CollectionToString(@case.inputs)} }} => {@case.expectedOutput}");
                 }
                 else
                 {
                     @case = testCases[0];
-                    Console.WriteLine($"\nExample: {{ {ArrayToString(@case.inputs)} }} => {@case.expectedOutput}");
+                    Console.WriteLine($"\nExample: {{ {CollectionToString(@case.inputs)} }} => {@case.expectedOutput}");
                 }
             }
             if (!string.IsNullOrWhiteSpace(specialNotes)) Console.WriteLine($"\n{specialNotes}");
         }
 
-        private static string ArrayToString(object[] array)
+        private static string CollectionToString(IEnumerable<object> array)
         {
             string result = string.Empty;
 
