@@ -419,6 +419,16 @@ namespace CodingRange
                 new TestCase(new object[] { "contains wheat", "contains fish" }, "contains wheat and fish"),
                 new TestCase(new object[] { "contains rhinoceros horn", "contains unicorn tears" }, "contains rhinoceros horn and unicorn tears"),
             }, "For example: given first = \"contains peanuts\" and second = \"contains soy\", return \"contains peanuts and soy\". (this is based off of a real problem I had to solve!)\nBonus! Can you solve this using interpolated strings instead of string concatenation?"),
+            // 34
+            new Problem("1993", "Any female born after 1993 can't cook. All they know is mcdonald's, charge they phone, twerk, be bisexual, eat hot chip and lie. And the worst part? They don't capitalize OR punctuate their sentences! Given a string representing a sentence written by one of these creatures, return that sentence with the first letter capitalized and with a period added to the end.", "string sentence", "string", new[]
+            {
+                new TestCase(new object[] { "all they know is mcdonald's" }, "All they know is mcdonald's."),
+                new TestCase(new object[] { "they charge they phone" }, "They charge they phone."),
+                new TestCase(new object[] { "they twerk" }, "They twerk."),
+                new TestCase(new object[] { "they be bisexual" }, "They be bisexual."),
+                new TestCase(new object[] { "they eat hot chip" }, "They eat hot chip."),
+                new TestCase(new object[] { "they lie" }, "They lie."),
+            }, "Bonus! Can you do this using interpolated strings?")
         };
     }
 }
