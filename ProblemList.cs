@@ -214,6 +214,7 @@ namespace CodingRange
             // 15
             new Problem("Money Printer v2", "We've gone too deep in debt, the money printer needs to be upgraded! The new money printer will actually square a person (or government)'s money. Since the square of a negative number is positive, this could solve our debt crisis!", "int x", "int", new[] 
             {
+                new TestCase(new object[] { 7 }, 49),
                 new TestCase(new object[] { 1 }, 1),
                 new TestCase(new object[] { 0 }, 0),
                 new TestCase(new object[] { -700 }, 490000),
@@ -282,10 +283,10 @@ namespace CodingRange
             // 21
             new Problem("Polynomial", "Given an input x, calculate and return y = 7x^5 + 4x^3 - 9x^2 + x - 27", "int x", "int", new[]
             {
+                new TestCase(new object[] { 2 }, 195),
                 new TestCase(new object[] { 0 }, -27),
                 new TestCase(new object[] { 1 }, -24),
                 new TestCase(new object[] { -1 }, -48),
-                new TestCase(new object[] { 2 }, 195),
                 new TestCase(new object[] { 3 }, 1704),
                 new TestCase(new object[] { -5 }, -22632),
                 new TestCase(new object[] { -10 }, -704937),
@@ -294,11 +295,11 @@ namespace CodingRange
             // 22
             new Problem("Addition", "Return the two inputs added together", "int x, int y", "int", new[]
             {
+                new TestCase(new object[] { 91, 8 }, 99),
                 new TestCase(new object[] { 0, 0 }, 0),
                 new TestCase(new object[] { -1, 0 }, -1),
                 new TestCase(new object[] { 0, 73 }, 73),
                 new TestCase(new object[] { 4, 4 }, 8),
-                new TestCase(new object[] { 91, 8 }, 99),
                 new TestCase(new object[] { -100, 1 }, -99),
                 new TestCase(new object[] { -75, -33 }, -108),
                 new TestCase(new object[] { 10383757, 5393826 }, 15777583),
@@ -320,10 +321,10 @@ namespace CodingRange
             // 24
             new Problem("Circle", "Given the radius of a circle, calculate and return its area.", "double r", "double", new[]
             {
+                new TestCase(new object[] { 3 }, 9 * Math.PI),
                 new TestCase(new object[] { 0 }, 0 * 0 * Math.PI),
                 new TestCase(new object[] { 1 }, 1 * Math.PI),
                 new TestCase(new object[] { 7 }, 49 * Math.PI),
-                new TestCase(new object[] { 3 }, 9 * Math.PI),
                 new TestCase(new object[] { 1033 }, 1067089 * Math.PI),
                 new TestCase(new object[] { 51 }, 2601 * Math.PI),
                 new TestCase(new object[] { 2.5 }, 6.25 * Math.PI),
@@ -331,8 +332,8 @@ namespace CodingRange
             // 25
             new Problem("Surface Area of a Sphere", "Given the **diameter** of a sphere, calculate and return its surface area", "double d", "double", new[]
             {
-                new TestCase(new object[] { 0 }, 4 * Math.PI * 0 * 0),
                 new TestCase(new object[] { 8 }, 4 * Math.PI * 4 * 4),
+                new TestCase(new object[] { 0 }, 4 * Math.PI * 0 * 0),
                 new TestCase(new object[] { 16 }, 4 * Math.PI * 8 * 8),
                 new TestCase(new object[] { 36 }, 4 * Math.PI * 18 * 18),
                 new TestCase(new object[] { 60 }, 4 * Math.PI * 30 * 30),
@@ -418,7 +419,17 @@ namespace CodingRange
                 new TestCase(new object[] { "contains peanuts", "contains tree nuts" }, "contains peanuts and tree nuts"),
                 new TestCase(new object[] { "contains wheat", "contains fish" }, "contains wheat and fish"),
                 new TestCase(new object[] { "contains rhinoceros horn", "contains unicorn tears" }, "contains rhinoceros horn and unicorn tears"),
-            }, "For example: given first = \"contains peanuts\" and second = \"contains soy\", return \"contains peanuts and soy\". (this is based off of a real problem I had to solve!)\nBonus! Can you solve this using interpolated strings instead of string concatenation?"),
+            }, "This is based off of a real problem I had to solve!\nBonus! Can you solve this using interpolated strings instead of string concatenation?"),
+            // 34
+            new Problem("1993", "Any female born after 1993 can't cook. All they know is mcdonald's, charge they phone, twerk, be bisexual, eat hot chip and lie. And the worst part? They don't capitalize OR punctuate their sentences! Given a string representing a sentence written by one of these creatures, return that sentence with the first letter capitalized and with a period added to the end.", "string sentence", "string", new[]
+            {
+                new TestCase(new object[] { "all they know is mcdonald's" }, "All they know is mcdonald's."),
+                new TestCase(new object[] { "they charge they phone" }, "They charge they phone."),
+                new TestCase(new object[] { "they twerk" }, "They twerk."),
+                new TestCase(new object[] { "they be bisexual" }, "They be bisexual."),
+                new TestCase(new object[] { "they eat hot chip" }, "They eat hot chip."),
+                new TestCase(new object[] { "they lie" }, "They lie."),
+            }, "Bonus! Can you do this using interpolated strings?")
         };
     }
 }
