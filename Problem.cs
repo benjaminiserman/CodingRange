@@ -73,7 +73,7 @@ namespace CodingRange
                 result += $"{x}, ";
             }
 
-            return result[0..^2];
+            return result[..^2];
         }
     }
 }
