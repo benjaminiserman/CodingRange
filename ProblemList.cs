@@ -367,7 +367,7 @@ namespace CodingRange
                 new TestCase(new object[] { "..-. . .-.. .-.. --- .-- / .-- --- .-. .-.. -.." }, '.'),
                 new TestCase(new object[] { "01101001 00100111 01101101 00100000 01101111 01110101 01110100 00100000 01101111 01100110 00100000 01110010 01101000 01111001 01101101 01100101 01110011" }, '1'),
                 new TestCase(new object[] { "rip" }, 'p'),
-            }),
+            }, "Bonus! Can you solve this problem using the index from end (^) operator?"),
             // 29
             new Problem("Middle?", "Alright those were too easy, let's make it a bit harder. Given a string of non-zero length, return the *middle* character of the string. If a string is of even length, choose the left of the two middle characters.", "string x", "char", new[]
             {
@@ -386,7 +386,7 @@ namespace CodingRange
                 new TestCase(new object[] { "epic! epic!" }, "epic!"),
                 new TestCase(new object[] { "epic! I should touch grass and stop saying epic!" }, "I should touch grass and stop saying epic!"),
                 new TestCase(new object[] { "epic! reeeeeeeeeeeeeeeeee" }, "reeeeeeeeeeeeeeeeee"),
-            }),
+            }, "Bonus! Can you solve this problem using the range (..) operator?"),
             // 31
             new Problem("More Middle", "Sometimes, we want to get both of the middle characters. Given a string of even length, return the substring containing the middle two characters.", "string x", "string", new[]
             {
@@ -398,7 +398,7 @@ namespace CodingRange
                new TestCase(new object[] { "rawr" }, "aw"), 
                new TestCase(new object[] { "Hello!" }, "ll"), 
                new TestCase(new object[] { "doge" }, "og"), 
-            }),
+            }, "Bonus! Can you solve this problem using the range (..) operator?"),
             // 32
             new Problem("String Concatenation", "Given two strings, concatenate (add) them together and return the result.", "string x, string y", "string", new[]
             {
@@ -419,7 +419,7 @@ namespace CodingRange
                 new TestCase(new object[] { "contains peanuts", "contains tree nuts" }, "contains peanuts and tree nuts"),
                 new TestCase(new object[] { "contains wheat", "contains fish" }, "contains wheat and fish"),
                 new TestCase(new object[] { "contains rhinoceros horn", "contains unicorn tears" }, "contains rhinoceros horn and unicorn tears"),
-            }, "This is based off of a real problem I had to solve!\nBonus! Can you solve this using interpolated strings instead of string concatenation?"),
+            }, "This is based off of a real problem I had to solve!\nBonus! Can you solve this using interpolated strings instead of string concatenation?\nSecond Bonus! Can you solve this problem using the range(..) operator?"),
             // 34
             new Problem("1993", "Any female born after 1993 can't cook. All they know is mcdonald's, charge they phone, twerk, be bisexual, eat hot chip and lie. And the worst part? They don't capitalize OR punctuate their sentences! Given a string representing a sentence written by one of these creatures, return that sentence with the first letter capitalized and with a period added to the end.", "string sentence", "string", new[]
             {
@@ -429,7 +429,7 @@ namespace CodingRange
                 new TestCase(new object[] { "they be bisexual" }, "They be bisexual."),
                 new TestCase(new object[] { "they eat hot chip" }, "They eat hot chip."),
                 new TestCase(new object[] { "they lie" }, "They lie."),
-            }, "Bonus! Can you do this using interpolated strings?")
+            }, "Bonus! Can you do this using interpolated strings?\nSecond Bonus! Can you solve this problem using the range(..) operator?")
         };
     }
 }
