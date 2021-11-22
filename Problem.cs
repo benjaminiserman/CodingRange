@@ -49,8 +49,6 @@ namespace CodingRange
 
                 if (!result.Equals(@case.expectedOutput))
                 {
-                    /*if (@case.inputs == null || @case.inputs.Length == 0) Console.WriteLine($"Error!\nGot: {result}\nExpected: {@case.expectedOutput}");
-                    else Console.WriteLine($"Error!\nInputs: {{ {CollectionToString(@case.inputs)} }}\nGot: {result}\nExpected: {@case.expectedOutput}");*/
                     Console.WriteLine("Error!");
                     if (@case.inputs is not null && @case.inputs.Length > 0) Console.WriteLine($"Inputs: {{ {ForDisplay(@case.inputs)} }}");
                     Console.WriteLine($"Got: {ForDisplay(result)}\nExpected: {ForDisplay(@case.expectedOutput)}");
