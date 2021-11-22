@@ -49,9 +49,7 @@ namespace CodingRange
 
                 if (!result.Equals(@case.expectedOutput))
                 {
-                    Console.WriteLine("Error!");
-                    if (@case.inputs is not null && @case.inputs.Length > 0) Console.WriteLine($"Inputs: {{ {DisplayHelper.ForDisplay(@case.inputs)} }}");
-                    Console.WriteLine($"Got: {DisplayHelper.ForDisplay(result)}\nExpected: {DisplayHelper.ForDisplay(@case.expectedOutput)}");
+                    @case.DisplayDiscrepancy(result);
                     return;
                 }
             }
@@ -66,19 +64,14 @@ namespace CodingRange
             Console.WriteLine($"Problem {id}: {name}\nExpected method parameters: {expectedParameters}\nExpected output type: {DisplayHelper.ForDisplay(expectedOutput)}\n\nInstructions:\n\n{description}");
             if (testCases[0].inputs != null)
             {
-                TestCase @case;
                 if (testCases[0].expectedOutput is bool)
                 {
-                    @case = testCases.First(x => (bool)x.expectedOutput);
-                    Console.WriteLine($"\nExample: {{ {DisplayHelper.ForDisplay(@case.inputs)} }} => {DisplayHelper.ForDisplay(@case.expectedOutput)}");
-
-                    @case = testCases.First(x => !(bool)x.expectedOutput);
-                    Console.WriteLine($"\nExample: {{ {DisplayHelper.ForDisplay(@case.inputs)} }} => {DisplayHelper.ForDisplay(@case.expectedOutput)}");
+                    testCases.First(x => (bool)x.expectedOutput).Display();
+                    testCases.First(x => !(bool)x.expectedOutput).Display();
                 }
                 else
                 {
-                    @case = testCases[0];
-                    Console.WriteLine($"\nExample: {{ {DisplayHelper.ForDisplay(@case.inputs)} }} => {DisplayHelper.ForDisplay(@case.expectedOutput)}");
+                    testCases[0].Display();
                 }
             }
             if (!string.IsNullOrWhiteSpace(specialNotes)) Console.WriteLine($"\n{specialNotes}");
