@@ -50,8 +50,8 @@ namespace CodingRange
                 if (!result.Equals(@case.expectedOutput))
                 {
                     Console.WriteLine("Error!");
-                    if (@case.inputs is not null && @case.inputs.Length > 0) Console.WriteLine($"Inputs: {{ {ForDisplay(@case.inputs)} }}");
-                    Console.WriteLine($"Got: {ForDisplay(result)}\nExpected: {ForDisplay(@case.expectedOutput)}");
+                    if (@case.inputs is not null && @case.inputs.Length > 0) Console.WriteLine($"Inputs: {{ {DisplayHelper.ForDisplay(@case.inputs)} }}");
+                    Console.WriteLine($"Got: {DisplayHelper.ForDisplay(result)}\nExpected: {DisplayHelper.ForDisplay(@case.expectedOutput)}");
                     return;
                 }
             }
@@ -63,49 +63,25 @@ namespace CodingRange
         {
             int id = ProblemList.List.FindIndex(x => x.name == name);
 
-            Console.WriteLine($"Problem {id}: {name}\nExpected method parameters: {expectedParameters}\nExpected output type: {ForDisplay(expectedOutput)}\n\nInstructions:\n\n{description}");
+            Console.WriteLine($"Problem {id}: {name}\nExpected method parameters: {expectedParameters}\nExpected output type: {DisplayHelper.ForDisplay(expectedOutput)}\n\nInstructions:\n\n{description}");
             if (testCases[0].inputs != null)
             {
                 TestCase @case;
                 if (testCases[0].expectedOutput is bool)
                 {
                     @case = testCases.First(x => (bool)x.expectedOutput);
-                    Console.WriteLine($"\nExample: {{ {ForDisplay(@case.inputs)} }} => {ForDisplay(@case.expectedOutput)}");
+                    Console.WriteLine($"\nExample: {{ {DisplayHelper.ForDisplay(@case.inputs)} }} => {DisplayHelper.ForDisplay(@case.expectedOutput)}");
 
                     @case = testCases.First(x => !(bool)x.expectedOutput);
-                    Console.WriteLine($"\nExample: {{ {ForDisplay(@case.inputs)} }} => {ForDisplay(@case.expectedOutput)}");
+                    Console.WriteLine($"\nExample: {{ {DisplayHelper.ForDisplay(@case.inputs)} }} => {DisplayHelper.ForDisplay(@case.expectedOutput)}");
                 }
                 else
                 {
                     @case = testCases[0];
-                    Console.WriteLine($"\nExample: {{ {ForDisplay(@case.inputs)} }} => {ForDisplay(@case.expectedOutput)}");
+                    Console.WriteLine($"\nExample: {{ {DisplayHelper.ForDisplay(@case.inputs)} }} => {DisplayHelper.ForDisplay(@case.expectedOutput)}");
                 }
             }
             if (!string.IsNullOrWhiteSpace(specialNotes)) Console.WriteLine($"\n{specialNotes}");
-        }
-
-        private static string CollectionToString(IEnumerable<object> array)
-        {
-            string result = string.Empty;
-
-            foreach (var x in array)
-            {
-                result += $"{ForDisplay(x)}, ";
-            }
-
-            return result[..^2];
-        }
-
-        private static string ForDisplay(object x)
-        {
-            return x switch
-            {
-                string str => $"\"{str}\"",
-                IEnumerable<object> ie => CollectionToString(ie),
-                char c => $"'{c}'",
-                bool b => b.ToString().ToLower(),
-                _ => x.ToString()
-            };
         }
     }
 }
