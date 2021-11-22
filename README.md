@@ -10,3 +10,6 @@ Important files:
  This particular problem list was tailor-made for a specific student.
  The problems have each been flavored to match their sense of humor, and often utilize in-jokes between the two of us.
  If you're not teaching the same person I am, *do not use these problems as they're currently worded*.
+
+Also Note:
+This project doesn't actually contain SmallTalk, the strange format of the Workspace.cs file confuses github. 
