@@ -95,7 +95,7 @@ namespace CodingRange
                 result += $"{ForDisplay(x)}, ";
             }
 
-            return result[0..^2];
+            return result[..^2];
         }
 
         private static string ForDisplay(object x)
