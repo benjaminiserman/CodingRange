@@ -10,14 +10,16 @@ namespace CodingRange
     {
         private static string CollectionToString(IEnumerable<object> array)
         {
-            string result = string.Empty;
+            StringBuilder sb = new();
 
             foreach (var x in array)
             {
-                result += $"{ForDisplay(x)}, ";
+                sb.Append($"{ForDisplay(x)}, ");
             }
 
-            return result[..^2];
+            sb.Remove(sb.Length - 2, 2);
+
+            return sb.ToString();
         }
 
         public static string ForDisplay(object x)
