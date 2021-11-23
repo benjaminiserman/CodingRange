@@ -6,10 +6,8 @@ namespace CodingRange
     public static class ProblemList
     {
         /* SPECIAL NOTES
-         * - unless otherwise noted, you do not need to check for over/underflow or divide by zero.
-         * 
-         * 
-         */
+           - unless otherwise noted, you do not need to check for over/underflow or divide by zero. 
+        */
         public static List<Problem> List { get; } = new()
         {
             // 0

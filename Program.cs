@@ -3,11 +3,11 @@ using System.Reflection;
 
 namespace CodingRange
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
-            var workspace = new Workspace();
+            Workspace workspace = new();
 
             var method = typeof(Workspace).GetMethod("Method", (BindingFlags)(-1));
 

@@ -13,10 +13,7 @@ namespace CodingRange
             this.expectedOutput = expectedOutput;
         }
 
-        public void Display()
-        {
-            Console.WriteLine($"\nExample: {{ {DisplayHelper.ForDisplay(inputs)} }} => {DisplayHelper.ForDisplay(expectedOutput)}");
-        }
+        public void Display() => Console.WriteLine($"\nExample: {{ {DisplayHelper.ForDisplay(inputs)} }} => {DisplayHelper.ForDisplay(expectedOutput)}");
 
         public void DisplayDiscrepancy(object result)
         {

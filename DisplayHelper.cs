@@ -22,16 +22,13 @@ namespace CodingRange
             return sb.ToString();
         }
 
-        public static string ForDisplay(object x)
+        public static string ForDisplay(object x) => x switch
         {
-            return x switch
-            {
-                string str => $"\"{str}\"",
-                IEnumerable<object> ie => CollectionToString(ie),
-                char c => $"'{c}'",
-                bool b => b.ToString().ToLower(),
-                _ => x.ToString()
-            };
-        }
+            string str => $"\"{str}\"",
+            IEnumerable<object> ie => CollectionToString(ie),
+            char c => $"'{c}'",
+            bool b => b.ToString().ToLower(),
+            _ => x.ToString()
+        };
     }
 }
