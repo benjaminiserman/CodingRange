@@ -475,7 +475,29 @@ namespace CodingRange
                 new TestCase(new object[] { 83, "fahrenheit" }, (83 - 32) * 5d/9),
                 new TestCase(new object[] { 90, "fahrenheit" }, (90 - 32) * 5d/9),
                 new TestCase(new object[] { 111, "fahrenheit" }, (111 - 32) * 5d/9),
-            }, "Bonus! Can you solve this with a conditional expression?")
+            }, "Bonus! Can you solve this with a conditional expression?"),
+            // 38
+            new Problem("Numbers to Words", "Doesn't it feel like... robotic when someone writes down the digits for a number less than 10 rather than writing out the word? Give an integer in the range [0, 10], return that integer written out as a word.", "int x", "string", new[]
+            {
+                new TestCase(new object[] { 0 }, "zero"),
+                new TestCase(new object[] { 1 }, "one"),
+                new TestCase(new object[] { 2 }, "two"),
+                new TestCase(new object[] { 3 }, "three"),
+                new TestCase(new object[] { 4 }, "four"),
+                new TestCase(new object[] { 5 }, "five"),
+                new TestCase(new object[] { 6 }, "six"),
+                new TestCase(new object[] { 7 }, "seven"),
+                new TestCase(new object[] { 8 }, "eight"),
+                new TestCase(new object[] { 9 }, "nine"),
+                new TestCase(new object[] { 10 }, "ten"),
+            }, "Bonus! Can you do this using a switch statement? How about a switch expression?"),
+            // 39
+            new Problem("Arrays I", "PS5s are a true luxury item. They were released like what, a year ago? And yet my friends still can't find any. Crazy! These days, only the first person in line will ever be able to get a PS5. Given an array of names representing people in line to get a PS5, return the name of the person who'll get the PS5.", "string[] line", "string", new[]
+            {
+                new TestCase(new object[] { new string[] { "Owen", "Tyler", "Charles" } }, "Owen"),
+                new TestCase(new object[] { new string[] { "Robert", "Edwin", "Edward", "Olivia", "Samantha", "Julia", "Kevin", "Catherine", "Sarah", "Edith", "Bob" } }, "Robert"),
+                new TestCase(new object[] { new string[] { "Anna" } }, "Anna")
+            })
         };
     }
 }
