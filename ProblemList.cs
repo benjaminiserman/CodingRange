@@ -456,6 +456,26 @@ namespace CodingRange
                 new TestCase(new object[] { 7 }, "liberal"),
                 new TestCase(new object[] { 8 }, "liberal"),
             }, "Bonus! Can you do this using a switch case? How about a switch expression?"),
+            // 37
+            new Problem("Temperatures", "Silly Americans still use Fahrenheit and get confused when the rest of the world uses Celsius. To remedy this problem, you will be given a double representing the current temperature, and a string saying whether the temperature is in celsius or fahrenheit. If given a temperature in fahrenheit, return it converted into celsius. If given a temperature in celsius, return it converted into fahrenheit.", "double temp, string kind", "double", new[]
+            {
+                new TestCase(new object[] { 0, "celsius" }, 0 * 9d/5 + 32),
+                new TestCase(new object[] { 5, "celsius" }, 5 * 9d/5 + 32),
+                new TestCase(new object[] { 10, "celsius" }, 10 * 9d/5 + 32),
+                new TestCase(new object[] { -10, "celsius" }, -10 * 9d/5 + 32),
+                new TestCase(new object[] { 21, "celsius" }, 21 * 9d/5 + 32),
+                new TestCase(new object[] { 30, "celsius" }, 30 * 9d/5 + 32),
+                new TestCase(new object[] { 215, "celsius" }, 215 * 9d/5 + 32),
+                new TestCase(new object[] { 0, "fahrenheit" }, (0 - 32) * 5d/9),
+                new TestCase(new object[] { -15, "fahrenheit" }, (-15 - 32) * 5d/9),
+                new TestCase(new object[] { 1, "fahrenheit" }, (1 - 32) * 5d/9),
+                new TestCase(new object[] { 55, "fahrenheit" }, (55 - 32) * 5d/9),
+                new TestCase(new object[] { 32, "fahrenheit" }, (32 - 32) * 5d/9),
+                new TestCase(new object[] { 75, "fahrenheit" }, (75 - 32) * 5d/9),
+                new TestCase(new object[] { 83, "fahrenheit" }, (83 - 32) * 5d/9),
+                new TestCase(new object[] { 90, "fahrenheit" }, (90 - 32) * 5d/9),
+                new TestCase(new object[] { 111, "fahrenheit" }, (111 - 32) * 5d/9),
+            }, "Bonus! Can you solve this with a conditional expression?")
         };
     }
 }
