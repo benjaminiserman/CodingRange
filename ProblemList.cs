@@ -427,7 +427,33 @@ namespace CodingRange
                 new TestCase(new object[] { "they be bisexual" }, "They be bisexual."),
                 new TestCase(new object[] { "they eat hot chip" }, "They eat hot chip."),
                 new TestCase(new object[] { "they lie" }, "They lie."),
-            }, "Bonus! Can you do this using interpolated strings?\nSecond Bonus! Can you solve this problem using the range(..) operator?")
+            }, "Bonus! Can you do this using interpolated strings?\nSecond Bonus! Can you solve this problem using the range(..) operator?"),
+            // 35
+            new Problem("Fail", "All these students keep getting answers wrong on their tests. Shameful! Given an input representing the number of problems a student got right on a 100 question test, return \"A\" if they got every question right and \"F\" if they got any questions wrong.", "int x", "string", new[]
+            {
+                new TestCase(new object[] { 0 }, "F"),
+                new TestCase(new object[] { 50 }, "F"),
+                new TestCase(new object[] { 100 }, "A"),
+                new TestCase(new object[] { 20 }, "F"),
+                new TestCase(new object[] { 30 }, "F"),
+                new TestCase(new object[] { 99 }, "F"),
+                new TestCase(new object[] { 98 }, "F"),
+                new TestCase(new object[] { 1 }, "F"),
+                new TestCase(new object[] { 17 }, "F"),
+            }, "Bonus! Can you do this using the ternary (?:) operator?"),
+            // 36
+            new Problem("Politics", "You've been asked to summarize some voter data in order to determine political leanings. If in the last 8 elections, a person voted for the Democratic candidate 6 or more times, we'll classify them as \"liberal\". If they voted for the Democratic candidate 2 or less times, we'll classify them as \"conservative\". Otherwise, we'll classify them as \"centrist\". Given the number of times a person voted for a Democratic candidate in the last 8 elections, return their classification under the prior rules.", "int x", "string", new[]
+            {
+                new TestCase(new object[] { 0 }, "conservative"),
+                new TestCase(new object[] { 1 }, "conservative"),
+                new TestCase(new object[] { 2 }, "conservative"),
+                new TestCase(new object[] { 3 }, "centrist"),
+                new TestCase(new object[] { 4 }, "centrist"),
+                new TestCase(new object[] { 5 }, "centrist"),
+                new TestCase(new object[] { 6 }, "liberal"),
+                new TestCase(new object[] { 7 }, "liberal"),
+                new TestCase(new object[] { 8 }, "liberal"),
+            }, "Bonus! Can you do this using a switch case? How about a switch expression?"),
         };
     }
 }
