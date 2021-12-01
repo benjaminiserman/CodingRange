@@ -2,3 +2,15 @@
 
 # IDE0040: Add accessibility modifiers
 dotnet_diagnostic.IDE0040.severity = suggestion
+
+# IDE0065: Misplaced using directive
+csharp_using_directive_placement = outside_namespace
+
+# CA1822: Mark members as static
+dotnet_diagnostic.CA1822.severity = silent
+
+# IDE0051: Remove unused private members
+dotnet_diagnostic.IDE0051.severity = silent
+
+# IDE0022: Use expression body for methods
+dotnet_diagnostic.IDE0022.severity = silent
