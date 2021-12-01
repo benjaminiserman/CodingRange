@@ -367,13 +367,15 @@ namespace CodingRange
                 new TestCase(new object[] { "rip" }, 'p'),
             }, "Bonus! Can you solve this problem using the index from end (^) operator?"),
             // 29
-            new Problem("Middle?", "Alright those were too easy, let's make it a bit harder. Given a string of non-zero length, return the *middle* character of the string. If a string is of even length, choose the left of the two middle characters.", "string x", "char", new[]
+            new Problem("Middle?", "Alright those were too easy, let's make it a bit harder. Given a string of non-zero length, return the *middle* character of the string. If a string is of even length, choose the right of the two middle characters.", "string x", "char", new[]
             {
                new TestCase(new object[] { "tacocat" }, 'o'), 
                new TestCase(new object[] { "racecar" }, 'e'), 
                new TestCase(new object[] { "dad" }, 'a'), 
                new TestCase(new object[] { "Anna" }, 'n'), 
-               new TestCase(new object[] { "noon" }, 'o'), 
+               new TestCase(new object[] { "noon" }, 'o'),
+               new TestCase(new object[] { "that" }, 'a'),
+               new TestCase(new object[] { "rawr" }, 'w'),
                new TestCase(new object[] { "reeeeeeeeeeeeeeeeeeeeeeeeeeeee" }, 'e'), 
             }),
             // 30
