@@ -497,7 +497,13 @@ namespace CodingRange
                 new(new object[] { new string[] { "Owen", "Tyler", "Charles" } }, "Owen"),
                 new(new object[] { new string[] { "Robert", "Edwin", "Edward", "Olivia", "Samantha", "Julia", "Kevin", "Catherine", "Sarah", "Edith", "Bob" } }, "Robert"),
                 new(new object[] { new string[] { "Anna" } }, "Anna")
-            })
+            }),
+            // 40
+            new Problem("Arrays II", "You'd think the CPU chip shortage was caused by the pandemic, but new reports say it was actually caused when factory workers were distracted by the sudden appearance of incredibly promiscuous half-naked cowboys. Well anyways, we're gonna need to hike up our prices to make up for our lack in supply. Given an array of decimals representing the prices for each item in our inventory, hike up the price by 15% and return the array. Do not round.", "decimal[] prices", "decimal[]", new TestCase[]
+            {
+                new(new object[] { new decimal[] { 15.00m, 7.50m, 2.50m, 1.00m } }, new decimal[] { 15.00m * 1.15m, 7.50m * 1.15m, 2.50m * 1.15m, 1.00m * 1.15m }),
+                new(new object[] { new decimal[] { 10.00m, 1.50m, 1.99m, 200.00m, 100.00m } }, new decimal[] { 10.00m * 1.15m, 1.50m * 1.15m, 1.99m * 1.15m, 200.00m * 1.15m, 100.00m * 1.15m }),
+            }),
         };
     }
 }
