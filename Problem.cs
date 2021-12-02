@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using System.Collections;
+using System.Linq;
+using System.Text.Json;
 
 namespace CodingRange
 {
@@ -46,7 +49,7 @@ namespace CodingRange
                     throw;
                 }
 
-                if (!result.Equals(@case.expectedOutput))
+                if (!IsEqual(result, @case.expectedOutput))
                 {
                     @case.DisplayDiscrepancy(result);
                     return;
@@ -60,7 +63,7 @@ namespace CodingRange
         {
             int id = ProblemList.List.FindIndex(x => x._name == _name);
 
-            Console.WriteLine($"Problem {id}: {_name}\nExpected method parameters: {_expectedParameters}\nExpected output type: {DisplayHelper.ForDisplay(_expectedOutput)}\n\nInstructions:\n\n{_description}");
+            Console.WriteLine($"Problem {id}: {_name}\nExpected method parameters: {_expectedParameters}\nExpected output type: {DisplayHelper.ForDisplay(_expectedOutput, false)}\n\nInstructions:\n\n{_description}");
             if (_testCases[0].inputs != null)
             {
                 if (_testCases[0].expectedOutput is bool)
@@ -75,6 +78,20 @@ namespace CodingRange
             }
 
             if (!string.IsNullOrWhiteSpace(_specialNotes)) Console.WriteLine($"\n{_specialNotes}");
+        }
+
+        private bool IsEqual(object x, object y)
+        {
+            if (x.GetType() != y.GetType()) return false;
+            if (x is string) return x == y;
+            if (x is IEnumerable && y is IEnumerable)
+            {
+                string sx = JsonSerializer.Serialize(x);
+                string sy = JsonSerializer.Serialize(y);
+
+                return sx == sy;
+            }
+            return x.Equals(y);
         }
     }
 }

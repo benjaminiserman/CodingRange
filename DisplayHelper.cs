@@ -1,28 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using System.Text;
 
 namespace CodingRange
 {
     public static class DisplayHelper
     {
-        private static string CollectionToString(IEnumerable<object> array)
+        private static string CollectionToString(IEnumerable array, bool simplify)
         {
-            StringBuilder sb = new();
+            StringBuilder sb = new(simplify ? string.Empty : "{ ");
 
             foreach (var x in array)
             {
-                sb.Append($"{ForDisplay(x)}, ");
+                sb.Append($"{ForDisplay(x, false)}, ");
             }
 
             sb.Remove(sb.Length - 2, 2);
 
-            return sb.ToString();
+            string end = simplify ? string.Empty : " }";
+            return $"{sb}{end}";
         }
 
-        public static string ForDisplay(object x) => x switch
+        public static string ForDisplay(object x, bool simplify) => x switch
         {
             string str => $"\"{str}\"",
-            IEnumerable<object> ie => CollectionToString(ie),
+            IEnumerable ie => CollectionToString(ie, simplify),
             char c => $"'{c}'",
             bool b => b.ToString().ToLower(),
             _ => x.ToString()

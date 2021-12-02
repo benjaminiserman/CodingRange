@@ -13,13 +13,13 @@ namespace CodingRange
             this.expectedOutput = expectedOutput;
         }
 
-        public void Display() => Console.WriteLine($"\nExample: {{ {DisplayHelper.ForDisplay(inputs)} }} => {DisplayHelper.ForDisplay(expectedOutput)}");
+        public void Display() => Console.WriteLine($"\nExample: {DisplayHelper.ForDisplay(inputs, true)} => {DisplayHelper.ForDisplay(expectedOutput, false)}");
 
         public void DisplayDiscrepancy(object result)
         {
             Console.WriteLine("Error!");
-            if (inputs is not null && inputs.Length > 0) Console.WriteLine($"Inputs: {{ {DisplayHelper.ForDisplay(inputs)} }}");
-            Console.WriteLine($"Got: {DisplayHelper.ForDisplay(result)}\nExpected: {DisplayHelper.ForDisplay(expectedOutput)}");
+            if (inputs is not null && inputs.Length > 0) Console.WriteLine($"Inputs: {DisplayHelper.ForDisplay(inputs, true)}");
+            Console.WriteLine($"Got: {DisplayHelper.ForDisplay(result, false)}\nExpected: {DisplayHelper.ForDisplay(expectedOutput, false)}");
         }
     }
 }
