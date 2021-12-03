@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 using System.Reflection;
-using System.Collections;
 using System.Text.Json;
 
 namespace CodingRange
