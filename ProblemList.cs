@@ -494,7 +494,7 @@ namespace CodingRange
             // 39
             new Problem("Arrays I", "PS5s are a true luxury item. They were released like what, a year ago? And yet my friends still can't find any. Crazy! These days, only the first person in line will ever be able to get a PS5. Given an array of names representing people in line to get a PS5, return the name of the person who'll actually get the PS5.", "string[] line", "string", new TestCase[]
             {
-                new(new object[] { new string[] { "Owen", "Tyler", "Charles" } }, "Owen"),
+                new(new object[] { new string[] { "Tyler", "Owen", "Charles" } }, "Tyler"),
                 new(new object[] { new string[] { "Robert", "Edwin", "Edward", "Olivia", "Samantha", "Julia", "Kevin", "Catherine", "Sarah", "Edith", "Bob" } }, "Robert"),
                 new(new object[] { new string[] { "Anna" } }, "Anna")
             }),
