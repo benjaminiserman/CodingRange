@@ -35,6 +35,11 @@ namespace CodingRange
             {
                 ProblemList.List[problemNumber].Evaluate(method);
             }
+            else if (ProblemList.List[problemNumber].IsInteractive)
+            {
+                method.Invoke(workspace, new[] { new DummyConsole() });
+            }
+            
 
             if (!displayProblem && !evaluateAnswer) Console.WriteLine("Nothing to display. Enable either displayProblem or evaluateAnswer.");
         }

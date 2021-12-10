@@ -97,6 +97,8 @@ namespace CodingRange
             if (!string.IsNullOrWhiteSpace(_specialNotes)) Console.WriteLine($"\n{_specialNotes}");
         }
 
+        public bool IsInteractive => _testCases?[0].inputs?[0] is DummyConsole and not null;
+
         private bool IsEqual(object x, object y)
         {
             if (x.GetType() != y.GetType()) return false;

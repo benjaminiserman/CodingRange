@@ -11,6 +11,13 @@ namespace CodingRange
         private readonly List<string> _outputs = new();
         private readonly StringBuilder _currentLine = new();
 
+        private readonly bool _interactive = false;
+
+        public DummyConsole()
+        {
+            _interactive = true;
+        }
+
         public DummyConsole(string[] inputs)
         {
             foreach (string s in inputs)
