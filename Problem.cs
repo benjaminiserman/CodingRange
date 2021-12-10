@@ -33,7 +33,7 @@ namespace CodingRange
             {
                 object result;
 
-                object[] inputsCopy = new object[@case.inputs.Length];
+                object[] inputsCopy = new object[@case.inputs?.Length ?? 0];
                 for (int i = 0; i < inputsCopy.Length; i++)
                 {
                     if (@case.inputs[i] is ICloneable)

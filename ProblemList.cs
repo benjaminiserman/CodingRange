@@ -549,6 +549,49 @@ namespace CodingRange
                 new(new object[] { new decimal[] { 15.00m, 7.50m, 2.50m, 1.00m } }, new decimal[] { 15.00m * 1.15m, 7.50m * 1.15m, 2.50m * 1.15m, 1.00m * 1.15m }),
                 new(new object[] { new decimal[] { 10.00m, 1.50m, 1.99m, 200.00m, 100.00m } }, new decimal[] { 10.00m * 1.15m, 1.50m * 1.15m, 1.99m * 1.15m, 200.00m * 1.15m, 100.00m * 1.15m }),
             }),
+            // 46
+            new Problem("Arrays VIII", "We've done it! After we hiked up the CPU chip prices, the cowboys realized they wouldn't be able to afford their gaming PCs with these new prices. They've decided to leave the factories and move to greener pastures... Specifically the stables of local casino / race tracks. They've heard one of those has a particularly hot single and they're all on the hunt to find them. Best of luck, half-naked cowboys! Anyways, to encourage them on their quest, let's give away the chips for free! Given an array of decimals representing the prices for each item in our inventory, set the price to $0.00.", "decimal[] prices", "decimal[]", new TestCase[]
+            {
+                new(new object[] { new decimal[] { 15.00m, 7.50m, 2.50m, 1.00m } }, new decimal[] { 0, 0, 0, 0 }),
+                new(new object[] { new decimal[] { 10.00m, 1.50m, 1.99m, 200.00m, 100.00m } }, new decimal[] { 0, 0, 0, 0, 0 }),
+            }),
+            // 47
+            new Problem("Casinos and Race Tracks", "You know what? Let's help these cowboys on their valiant quest. The cowboys are trying to find a casino / race track, and they also know that the hot single is located in the northern US (latitude > 36.30). Given a boolean representing whether or not a business has a casino, a boolean representing whether or not a business has a race track, and a double representing latitude, return whether or not that business is in the north and has both a casino and a race track.", "bool casino, bool raceTrack, double latitude", "bool", new TestCase[]
+            {
+                new(new object[] { false, false, 25.0 }, false),
+                new(new object[] { false, true, 15.9 }, false),
+                new(new object[] { true, false, 17.5 }, false),
+                new(new object[] { true, true, -5.2 }, false),
+                new(new object[] { false, false, 36.3 }, false),
+                new(new object[] { false, true, 36.3 }, false),
+                new(new object[] { true, false, 36.3 }, false),
+                new(new object[] { true, true, 36.3 }, false),
+                new(new object[] { false, false, 40.8 }, false),
+                new(new object[] { false, true, 75.0 }, false),
+                new(new object[] { true, false, 45.5 }, false),
+                new(new object[] { true, true, 45.2 }, true),
+            }),
+            // 48
+            new Problem("States", "In the cowboys' extensive research, they've also determined that the single lives in a US state starting with the letter 'M'. Return an array of strings containing every state that begins with the letter 'M' in alphabetical order. Capitalize the first letter of each state name.", "(no parameters)", "string[]", new TestCase[]
+            {
+                new(null, new string[] { "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana" })
+            }),
+            // 49
+            new Problem("Singles", "Alright, we've narrowed down the locations significantly. Next, we need to filter out the locations that don't have any singles. Given an integer array representing the number of singles at each location, return a list of integers containing the number of singles at each location with at least one single. Preserve the ordering of array elements in your answer.", "int[] counts", "List<int>", new TestCase[] 
+            {
+                new(new object[] { new int[] { 12, 0, 7, 0, 0, 3, 1, 0, 0, 2, 0, 1 } }, new List<int>() { 12, 7, 3, 1, 2, 1, }),
+                new(new object[] { new int[] { 5, 0, 3, 0 } }, new List<int>() { 5, 3 }),
+                new(new object[] { new int[] { 1, 1, 1, 1, 1, 1 } }, new List<int>() { 1, 1, 1, 1, 1, 1 }),
+                new(new object[] { new int[] { 2, 0, 3, 4, 1, 0, 0 } }, new List<int>() { 2, 3, 4, 1 }),
+                new(new object[] { new int[] { 0, 0, 5, 1, 2, 0, 2, 0, 1 } }, new List<int>() { 5, 1, 2, 2, 1 }),
+            }),
+            // 50
+            new Problem("Filtering", "The cowboys just realized there's been an error in their calculations! Among other things, Mississippi was included in the list of states given to them, but Mississippi is certainly in the South... Great scholars among the cowboys have produced a series of lists of states that meet certain other specific criteria known to be important in locating the chosen one. Given a list of states starting with the letter M and a list of states matching some unknown criteria, return a list of states that start with the letter M and match that unknown criteria in alphabetical order.", "List<string> startWithM, List<string> matchCriteria", "List<string>", new TestCase[]
+            {
+                new(new object[] { new List<string>() { "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana" }, new List<string>() { "Maine", "Minnesota", "Michigan", "Massachusetts", "Oregon", "California", "Nevada", "Wisconsin", "Iowa", "Kansas", "Illinois", "Indiana", "Ohio", "Pennsylvania", "New York", "Vermont", "New Hampshire", "New Jersey", "Rhode Island", "Connecticut" } }, new List<string>() { "Maine", "Massachusetts", "Michigan", "Minnesota" }),
+                new(new object[] { new List<string>() { "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana" }, new List<string>() { "Arkansas", "Maryland", "Maine", "Oregon" } }, new List<string>() { "Maine", "Maryland" }),
+                new(new object[] { new List<string>() { "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana" }, new List<string>() { "Massachusetts", "Kentucky", "Washington", "Alaska", "Michigan", "Montana" } }, new List<string>() { "Massachusetts", "Michigan", "Montana" }),
+            })
         };
     }
 }
