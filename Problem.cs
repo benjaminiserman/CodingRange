@@ -36,7 +36,14 @@ namespace CodingRange
                 object[] inputsCopy = new object[@case.inputs.Length];
                 for (int i = 0; i < inputsCopy.Length; i++)
                 {
-                    inputsCopy[i] = ((ICloneable)@case.inputs[i]).Clone(); // please god tell me this works
+                    if (@case.inputs[i] is ICloneable)
+                    {
+                        inputsCopy[i] = ((ICloneable)@case.inputs[i]).Clone(); // please god tell me this works
+                    }
+                    else
+                    {
+                        inputsCopy[i] = @case.inputs[i];
+                    }
                 }    
 
                 try
