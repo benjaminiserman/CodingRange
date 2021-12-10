@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text.Json;
@@ -36,9 +37,9 @@ namespace CodingRange
                 object[] inputsCopy = new object[@case.inputs?.Length ?? 0];
                 for (int i = 0; i < inputsCopy.Length; i++)
                 {
-                    if (@case.inputs[i] is ICloneable)
+                    if (@case.inputs[i] is ICloneable cloneable)
                     {
-                        inputsCopy[i] = ((ICloneable)@case.inputs[i]).Clone(); // please god tell me this works
+                        inputsCopy[i] = cloneable.Clone(); // please god tell me this works
                     }
                     else
                     {
@@ -58,10 +59,14 @@ namespace CodingRange
                 catch (ArgumentException)
                 {
                     Console.WriteLine($"Error! An ArgumentException was thrown... This may be due to an error in your method signature. Does it match \"{_expectedParameters}\"?");
-                    throw;
+                    return;
                 }
 
-                if (!IsEqual(result, @case.expectedOutput))
+                if (@case.inputs[0] is DummyConsole dummy)
+                {
+                    if (!(bool)typeof(DummyConsole).GetMethod("Grade", (BindingFlags)(-1)).Invoke(dummy, new[] { @case.expectedOutput })) return;
+                }
+                else if (!IsEqual(result, @case.expectedOutput))
                 {
                     @case.DisplayDiscrepancy(result);
                     return;
