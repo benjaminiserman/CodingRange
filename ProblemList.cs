@@ -499,7 +499,34 @@ namespace CodingRange
                 new(new object[] { new string[] { "Anna" } }, "Anna")
             }),
             // 40
-            new Problem("Arrays II", "You'd think the CPU chip shortage was caused by the pandemic, but new reports say it was actually caused when factory workers were distracted by the sudden appearance of incredibly promiscuous half-naked cowboys. Well anyways, we're gonna need to hike up our prices to make up for our lack in supply. Given an array of decimals representing the prices for each item in our inventory, hike up the price by 15% and return the array. Do not round.", "decimal[] prices", "decimal[]", new TestCase[]
+            new Problem("Arrays II", "Hmmm... Is the PS5 shortage because we're running out of computer chips? Given an array of integers representing the number of chips at each factory, return how many chips we have in total.", "int[] counts", "int", new TestCase[]
+            {
+                new(new object[] { new int[] { 2, 7, 9, 5, 10 } }, 33),
+                new(new object[] { new int[] { 6, 5, 13, 99, 45, 0, 0, 0 } }, 168),
+                new(new object[] { new int[] { 2, 2, 2, 5 } }, 11),
+                new(new object[] { new int[] { 89, 451, 23, 965, 666, 32 } }, 2226),
+                new(new object[] { new int[] { 5 } }, 5),
+            }),
+            // 41
+            new Problem("Arrays III", "Yeah, something's definitely off. First, let's weed out which factory is definitely working. Given an array of integers reperenting the number of chips at each factory, return the number of chips found at the best-stocked factory.", "int[] counts", "int", new TestCase[]
+            {
+                new(new object[] { new int[] { 2, 7, 9, 5, 10 } }, 10),
+                new(new object[] { new int[] { 6, 5, 13, 99, 45, 0, 0, 0 } }, 99),
+                new(new object[] { new int[] { 2, 2, 2, 5 } }, 5),
+                new(new object[] { new int[] { 89, 451, 23, 965, 666, 32 } }, 965),
+                new(new object[] { new int[] { 5 } }, 5),
+            }),
+            // 42
+            new Problem("Arrays IV", "Alright good, now let's find the worst-performing factory. Given an array of integers reperenting the number of chips at each factory, return the number of chips found at the worst-stocked factory.", "int[] counts", "int", new TestCase[]
+            {
+                new(new object[] { new int[] { 2, 7, 9, 5, 10 } }, 2),
+                new(new object[] { new int[] { 6, 5, 13, 99, 45, 0, 0, 0 } }, 0),
+                new(new object[] { new int[] { 2, 2, 2, 5 } }, 2),
+                new(new object[] { new int[] { 89, 451, 23, 965, 666, 32 } }, 23),
+                new(new object[] { new int[] { 5 } }, 5),
+            }),
+            // 43
+            new Problem("Arrays V", "You'd think the CPU chip shortage was caused by the pandemic, but new reports say it was actually caused when factory workers were distracted by the sudden appearance of incredibly promiscuous half-naked cowboys. Well anyways, we're gonna need to hike up our prices to make up for our lack in supply. Given an array of decimals representing the prices for each item in our inventory, hike up the price by 15% and return the array. Do not round.", "decimal[] prices", "decimal[]", new TestCase[]
             {
                 new(new object[] { new decimal[] { 15.00m, 7.50m, 2.50m, 1.00m } }, new decimal[] { 15.00m * 1.15m, 7.50m * 1.15m, 2.50m * 1.15m, 1.00m * 1.15m }),
                 new(new object[] { new decimal[] { 10.00m, 1.50m, 1.99m, 200.00m, 100.00m } }, new decimal[] { 10.00m * 1.15m, 1.50m * 1.15m, 1.99m * 1.15m, 200.00m * 1.15m, 100.00m * 1.15m }),
