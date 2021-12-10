@@ -1,4 +1,4 @@
-﻿internal class Workspace
+﻿class Workspace
 {
     #region Controls
     #pragma warning disable
@@ -10,7 +10,7 @@
     #pragma warning restore
     #endregion
 
-    private string Method() // This method MUST be called Method (case-sensitive) for CodingRange to pick it up.
+    string Method() // This method MUST be called Method (case-sensitive) for CodingRange to pick it up.
     {
         return "Test";
     }
