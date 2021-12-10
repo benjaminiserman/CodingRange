@@ -33,9 +33,15 @@ namespace CodingRange
             {
                 object result;
 
+                object[] inputsCopy = new object[@case.inputs.Length];
+                for (int i = 0; i < inputsCopy.Length; i++)
+                {
+                    inputsCopy[i] = ((ICloneable)@case.inputs[i]).Clone(); // please god tell me this works
+                }    
+
                 try
                 {
-                    result = method.Invoke(new Workspace(), @case.inputs);
+                    result = method.Invoke(new Workspace(), inputsCopy);
                 }
                 catch (TargetParameterCountException)
                 {
