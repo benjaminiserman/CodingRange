@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text.Json;
@@ -62,9 +61,9 @@ namespace CodingRange
                     return;
                 }
 
-                if (@case.inputs[0] is DummyConsole dummy)
+                if ((@case.inputs?.Length ?? 0) > 0 && @case.inputs[0] is DummyConsole dummy)
                 {
-                    if (!(bool)typeof(DummyConsole).GetMethod("Grade", (BindingFlags)(-1)).Invoke(dummy, new[] { @case.expectedOutput })) return;
+                    if (!(bool)typeof(DummyConsole).GetMethod("Grade", (BindingFlags)(-1)).Invoke(dummy, new[] { @case.expectedOutput, null })) return;
                 }
                 else if (!IsEqual(result, @case.expectedOutput))
                 {
@@ -88,6 +87,10 @@ namespace CodingRange
                     _testCases.First(x => (bool)x.expectedOutput).Display();
                     _testCases.First(x => !(bool)x.expectedOutput).Display();
                 }
+                else if (_testCases[0].inputs[0] is DummyConsole dummy)
+                {
+                    dummy.DisplayExample();
+                }
                 else
                 {
                     _testCases[0].Display();
@@ -102,7 +105,7 @@ namespace CodingRange
         private bool IsEqual(object x, object y)
         {
             if (x.GetType() != y.GetType()) return false;
-            if (x is string) return x == y;
+            if (x is string) return x.Equals(y);
             if (x is IEnumerable && y is IEnumerable)
             {
                 string sx = JsonSerializer.Serialize(x);
@@ -110,6 +113,7 @@ namespace CodingRange
 
                 return sx == sy;
             }
+
             return x.Equals(y);
         }
     }

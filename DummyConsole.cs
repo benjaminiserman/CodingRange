@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Reflection;
 
@@ -9,8 +8,8 @@ namespace CodingRange
     public class DummyConsole
     {
         private readonly Queue<string> _inputs = new();
-        private readonly List<string> _outputs = new();
-        private readonly StringBuilder _currentLine = new();
+        private readonly string[] _inputsCopy;
+        private readonly StringBuilder _output = new();
 
         private readonly bool _interactive = false;
 
@@ -19,8 +18,10 @@ namespace CodingRange
             _interactive = true;
         }
 
-        public DummyConsole(string[] inputs)
+        public DummyConsole(params string[] inputs)
         {
+            _inputsCopy = inputs;
+
             foreach (string s in inputs)
             {
                 _inputs.Enqueue(s);
@@ -31,55 +32,33 @@ namespace CodingRange
 
         public void Write(object x)
         {
-            string s = x.ToString();
-            string[] split = s.Split('\n');
-
-            _currentLine.Append(split[0]);
-
-            FinWrite(_currentLine.ToString());
-            _currentLine.Clear();
-
-            foreach (string y in split[1..^1])
-            {
-                FinWrite(y);
-            }
-
-            if (s[^1] == '\n')
-            {
-                FinWrite(split[^1]);
-            }
-            else _currentLine.Append(s[^1]);
-
-            void FinWrite(string s)
-            {
-                _outputs.Add(s);
-                Console.WriteLine(s);
-            }
+            _output.Append(x);
+            Console.Write(x);
         }
 
-        public void ReadLine() => _inputs.Dequeue();
+        public string ReadLine() => _interactive ? Console.ReadLine() : _inputs.Dequeue();
 
-        private List<string> Output()
+        public void DisplayExample()
         {
-            string sb = _currentLine.ToString();
-
-            if (sb != string.Empty)
-            {
-                _outputs.Add(sb);
-            }
-
-            return _outputs;
+            Console.WriteLine("Example Inputs:");
+            foreach (string s in _inputsCopy) Console.WriteLine(s);
+            Console.WriteLine("Should Output:");
+            // $$$
         }
 
-        public bool Grade(string[] expectedOutput, DummyRandom dummyRandom = null)
+        public bool Grade(string expectedOutput, DummyRandom dummyRandom = null)
         {
-            bool equal = _outputs.Count == expectedOutput.Length && !_outputs.Zip(expectedOutput, (x, y) => x == y).Any(x => !x);
-
-            if (!equal)
+            if (_output[^1] == '\n')
             {
-                Console.WriteLine("Error!");
+                Console.WriteLine();
+                _output.Remove(_output.Length - 1, 1);
+            }
+
+            if (expectedOutput != _output.ToString())
+            {
+                Console.WriteLine("Error!\n");
                 Console.WriteLine("Inputs:");
-                foreach (string s in _inputs) Console.WriteLine(s);
+                foreach (string s in _inputsCopy) Console.WriteLine(s);
                 if (dummyRandom is not null)
                 {
                     Console.WriteLine($"Random Values: {DisplayHelper.ForDisplay((int[])typeof(DummyRandom).GetProperty("Outputs", (BindingFlags)(-1)).GetValue(dummyRandom), false)}");
@@ -87,10 +66,12 @@ namespace CodingRange
                 //Console.WriteLine("Got:");
                 //foreach (string s in _outputs) Console.WriteLine(s);
                 Console.WriteLine("Expected:");
-                foreach (string s in expectedOutput) Console.WriteLine(s);
+                Console.WriteLine(expectedOutput);
+
+                return false;
             }
 
-            return equal;
+            return true;
         }
     }
 }
