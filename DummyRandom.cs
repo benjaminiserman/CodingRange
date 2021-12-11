@@ -41,7 +41,7 @@ namespace CodingRange
             {
                 (int fMin, int fMax, int x) = _queue.Dequeue();
 
-                if (fMin != min || fMin != max)
+                if (fMin != min || fMax != max)
                 {
                     throw new ArgumentException($"You called Next({min}, {max}) but backend expected Next({fMin}, {fMax})!");
                 }

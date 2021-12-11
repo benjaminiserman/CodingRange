@@ -13,6 +13,8 @@ namespace CodingRange
 
         private readonly bool _interactive = false;
 
+        public DummyRandom DummyRandom { private get; set; } = null;
+
         public DummyConsole()
         {
             _interactive = true;
@@ -46,7 +48,7 @@ namespace CodingRange
             Console.WriteLine(expectedOutput);
         }
 
-        public bool Grade(string expectedOutput, DummyRandom dummyRandom = null)
+        public bool Grade(string expectedOutput)
         {
             if (_output[^1] == '\n')
             {
@@ -57,12 +59,14 @@ namespace CodingRange
             if (expectedOutput != _output.ToString())
             {
                 Console.WriteLine("Error!\n");
+
+                if (DummyRandom is not null)
+                {
+                    Console.WriteLine($"Random Values: {DisplayHelper.ForDisplay((int[])typeof(DummyRandom).GetProperty("Outputs", (BindingFlags)(-1)).GetValue(DummyRandom), false)}");
+                }
+
                 Console.WriteLine("Inputs:");
                 foreach (string s in _inputsCopy) Console.WriteLine(s);
-                if (dummyRandom is not null)
-                {
-                    Console.WriteLine($"Random Values: {DisplayHelper.ForDisplay((int[])typeof(DummyRandom).GetProperty("Outputs", (BindingFlags)(-1)).GetValue(dummyRandom), false)}");
-                }
 
                 Console.WriteLine("Expected:");
                 Console.WriteLine(expectedOutput);

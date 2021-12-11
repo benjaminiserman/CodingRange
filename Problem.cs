@@ -64,7 +64,8 @@ namespace CodingRange
 
                 if ((@case.inputs?.Length ?? 0) > 0 && @case.inputs[0] is DummyConsole dummy)
                 {
-                    if (!(bool)typeof(DummyConsole).GetMethod("Grade", (BindingFlags)(-1)).Invoke(dummy, new[] { @case.expectedOutput, null })) return;
+                    if (@case.inputs.Length >= 2 && @case.inputs[1] is DummyRandom random) dummy.DummyRandom = random;
+                    if (!(bool)typeof(DummyConsole).GetMethod("Grade", (BindingFlags)(-1)).Invoke(dummy, new[] { @case.expectedOutput })) return;
                 }
                 else if (!IsEqual(result, @case.expectedOutput))
                 {
@@ -88,10 +89,6 @@ namespace CodingRange
                     _testCases.First(x => (bool)x.expectedOutput).DisplayExample();
                     _testCases.First(x => !(bool)x.expectedOutput).DisplayExample();
                 }
-                else if (_testCases[0].inputs[0] is DummyConsole dummy)
-                {
-                    dummy.DisplayExample((string)_testCases[0].expectedOutput);
-                }
                 else
                 {
                     _testCases[0].DisplayExample();
@@ -102,6 +99,13 @@ namespace CodingRange
         }
 
         public bool IsInteractive => _testCases?[0].inputs?[0] is DummyConsole and not null;
+
+        public Type[] GetParameterTypes()
+        {
+            if (_testCases[0].inputs.Length == 0) return null;
+
+            return (from x in _testCases[0].inputs select x.GetType()).ToArray();
+        }
 
         private bool IsEqual(object x, object y)
         {

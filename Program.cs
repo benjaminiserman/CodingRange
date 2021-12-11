@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
 
 namespace CodingRange
@@ -37,7 +38,11 @@ namespace CodingRange
             }
             else if (ProblemList.List[problemNumber].IsInteractive)
             {
-                method.Invoke(workspace, new[] { new DummyConsole() });
+                Console.WriteLine("Running in INTERACTIVE mode.");
+                Type[] types = ProblemList.List[problemNumber].GetParameterTypes();
+                object[] parameters = (from t in types select Activator.CreateInstance(t)).ToArray();
+
+                method.Invoke(workspace, parameters);
             }
             
             if (!displayProblem && !evaluateAnswer) Console.WriteLine("Nothing to display. Enable either displayProblem or evaluateAnswer.");
