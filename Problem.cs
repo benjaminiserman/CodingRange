@@ -30,20 +30,20 @@ namespace CodingRange
             Console.WriteLine("\nOutput:");
             if (_testCases[0].inputs.Length == 0 || _testCases[0].inputs[0] is not DummyConsole) Console.WriteLine();
 
-            foreach (var @case in _testCases)
+            foreach (var testCase in _testCases)
             {
                 object result;
 
-                object[] inputsCopy = new object[@case.inputs?.Length ?? 0];
+                object[] inputsCopy = new object[testCase.inputs?.Length ?? 0];
                 for (int i = 0; i < inputsCopy.Length; i++)
                 {
-                    if (@case.inputs[i] is ICloneable cloneable)
+                    if (testCase.inputs[i] is ICloneable cloneable)
                     {
                         inputsCopy[i] = cloneable.Clone(); // please god tell me this works
                     }
                     else
                     {
-                        inputsCopy[i] = @case.inputs[i];
+                        inputsCopy[i] = testCase.inputs[i];
                     }
                 }    
 
@@ -53,7 +53,7 @@ namespace CodingRange
                 }
                 catch (TargetParameterCountException)
                 {
-                    Console.WriteLine($"Error! Incorrect number of parameters. Problem \"{_name}\" expects {@case.inputs?.Length ?? 0} inputs.");
+                    Console.WriteLine($"Error! Incorrect number of parameters. Problem \"{_name}\" expects {testCase.inputs?.Length ?? 0} inputs.");
                     return;
                 }
                 catch (ArgumentException)
@@ -62,14 +62,14 @@ namespace CodingRange
                     return;
                 }
 
-                if ((@case.inputs?.Length ?? 0) > 0 && @case.inputs[0] is DummyConsole dummy)
+                if ((testCase.inputs?.Length ?? 0) > 0 && testCase.inputs[0] is DummyConsole dummy)
                 {
-                    if (@case.inputs.Length >= 2 && @case.inputs[1] is DummyRandom random) dummy.DummyRandom = random;
-                    if (!(bool)typeof(DummyConsole).GetMethod("Grade", (BindingFlags)(-1)).Invoke(dummy, new[] { @case.expectedOutput })) return;
+                    if (testCase.inputs.Length >= 2 && testCase.inputs[1] is DummyRandom random) dummy.DummyRandom = random;
+                    if (!(bool)typeof(DummyConsole).GetMethod("Grade", (BindingFlags)(-1)).Invoke(dummy, new[] { testCase.expectedOutput })) return;
                 }
-                else if (!IsEqual(result, @case.expectedOutput))
+                else if (!IsEqual(result, testCase.expectedOutput))
                 {
-                    @case.DisplayDiscrepancy(result);
+                    testCase.DisplayDiscrepancy(result);
                     return;
                 }
             }
