@@ -38,12 +38,12 @@ namespace CodingRange
 
         public string ReadLine() => _interactive ? Console.ReadLine() : _inputs.Dequeue();
 
-        public void DisplayExample()
+        public void DisplayExample(string expectedOutput)
         {
-            Console.WriteLine("Example Inputs:");
+            Console.WriteLine("\nExample Inputs:");
             foreach (string s in _inputsCopy) Console.WriteLine(s);
             Console.WriteLine("Should Output:");
-            // $$$
+            Console.WriteLine(expectedOutput);
         }
 
         public bool Grade(string expectedOutput, DummyRandom dummyRandom = null)
@@ -63,8 +63,7 @@ namespace CodingRange
                 {
                     Console.WriteLine($"Random Values: {DisplayHelper.ForDisplay((int[])typeof(DummyRandom).GetProperty("Outputs", (BindingFlags)(-1)).GetValue(dummyRandom), false)}");
                 }
-                //Console.WriteLine("Got:");
-                //foreach (string s in _outputs) Console.WriteLine(s);
+
                 Console.WriteLine("Expected:");
                 Console.WriteLine(expectedOutput);
 

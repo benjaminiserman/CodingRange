@@ -27,7 +27,8 @@ namespace CodingRange
 
         public void Evaluate(MethodInfo method)
         {
-            Console.WriteLine("\nOutput:\n");
+            Console.WriteLine("\nOutput:");
+            if (_testCases[0].inputs.Length == 0 || _testCases[0].inputs[0] is not DummyConsole) Console.WriteLine();
 
             foreach (var @case in _testCases)
             {
@@ -89,7 +90,7 @@ namespace CodingRange
                 }
                 else if (_testCases[0].inputs[0] is DummyConsole dummy)
                 {
-                    dummy.DisplayExample();
+                    dummy.DisplayExample((string)_testCases[0].expectedOutput);
                 }
                 else
                 {
