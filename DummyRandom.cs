@@ -18,7 +18,7 @@ namespace CodingRange
             _random = new();
         }
 
-        public DummyRandom((int, int, int)[] outputs)
+        public DummyRandom(params (int, int, int)[] outputs)
         {
             _queue = new();
             _outputs = outputs;
