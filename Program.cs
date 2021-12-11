@@ -40,7 +40,6 @@ namespace CodingRange
                 method.Invoke(workspace, new[] { new DummyConsole() });
             }
             
-
             if (!displayProblem && !evaluateAnswer) Console.WriteLine("Nothing to display. Enable either displayProblem or evaluateAnswer.");
         }
     }
