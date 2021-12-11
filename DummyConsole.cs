@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Reflection;
 
 namespace CodingRange
 {
@@ -70,7 +71,7 @@ namespace CodingRange
             return _outputs;
         }
 
-        public bool Grade(string[] expectedOutput)
+        public bool Grade(string[] expectedOutput, DummyRandom dummyRandom = null)
         {
             bool equal = _outputs.Count == expectedOutput.Length && !_outputs.Zip(expectedOutput, (x, y) => x == y).Any(x => !x);
 
@@ -79,8 +80,12 @@ namespace CodingRange
                 Console.WriteLine("Error!");
                 Console.WriteLine("Inputs:");
                 foreach (string s in _inputs) Console.WriteLine(s);
-                Console.WriteLine("Got:");
-                foreach (string s in _outputs) Console.WriteLine(s);
+                if (dummyRandom is not null)
+                {
+                    Console.WriteLine($"Random Values: {DisplayHelper.ForDisplay((int[])typeof(DummyRandom).GetProperty("Outputs", (BindingFlags)(-1)).GetValue(dummyRandom), false)}");
+                }
+                //Console.WriteLine("Got:");
+                //foreach (string s in _outputs) Console.WriteLine(s);
                 Console.WriteLine("Expected:");
                 foreach (string s in expectedOutput) Console.WriteLine(s);
             }
