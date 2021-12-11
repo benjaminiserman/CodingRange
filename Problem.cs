@@ -110,14 +110,14 @@ namespace CodingRange
         private bool IsEqual(object x, object y)
         {
             if (x.GetType() != y.GetType()) return false;
-            if (x is string) return x.Equals(y);
-            if (x is IEnumerable && y is IEnumerable)
-            {
-                string sx = JsonSerializer.Serialize(x);
-                string sy = JsonSerializer.Serialize(y);
 
-                return sx == sy;
-            }
+#pragma warning disable IDE0038 // Use pattern matching // disabled to maintain parallel structure
+            if (x is string) return x.Equals(y);
+            else if (x is IEnumerable) return JsonSerializer.Serialize(x) == JsonSerializer.Serialize(y);
+            else if (x is float) return Math.Abs((float)x - (float)y) <= 0.0000001f;
+            else if (x is double) return Math.Abs((double)x - (double)y) <= 0.0000001d;
+            else if (x is decimal) return Math.Abs((decimal)x - (decimal)y) <= 0.0000001m;
+#pragma warning restore IDE0038 // Use pattern matching
 
             return x.Equals(y);
         }
