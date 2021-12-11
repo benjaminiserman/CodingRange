@@ -85,8 +85,8 @@ namespace CodingRange
             {
                 if (_testCases[0].expectedOutput is bool)
                 {
-                    _testCases.First(x => (bool)x.expectedOutput).Display();
-                    _testCases.First(x => !(bool)x.expectedOutput).Display();
+                    _testCases.First(x => (bool)x.expectedOutput).DisplayExample();
+                    _testCases.First(x => !(bool)x.expectedOutput).DisplayExample();
                 }
                 else if (_testCases[0].inputs[0] is DummyConsole dummy)
                 {
@@ -94,7 +94,7 @@ namespace CodingRange
                 }
                 else
                 {
-                    _testCases[0].Display();
+                    _testCases[0].DisplayExample();
                 }
             }
 
