@@ -222,7 +222,7 @@ namespace CodingRange
                 new(new object[] { -2100 }, 4410000),
             }, "Remember, to square a number is to multiply that number by itself."),
             // 16
-            new Problem("Money Gun", "You've done your country proud, eternal president Obama thanks you for your service... But we'r e gonna need a money gun now so we can help out our allies and destroy our enemies. Given an input representing how much money our target has, return the inverse of that amount.", "int x", "int", new TestCase[] 
+            new Problem("Money Gun", "You've done your country proud, eternal president Obama thanks you for your service... But we're gonna need a money gun now so we can help out our allies and destroy our enemies. Given an input representing how much money our target has, return the opposite of that amount.", "int x", "int", new TestCase[] 
             {
                 new(new object[] { 1 }, -1),
                 new(new object[] { 0 }, 0),
