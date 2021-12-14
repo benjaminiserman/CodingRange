@@ -54,6 +54,8 @@ namespace CodingRange
             }
         }
 
-        private int[] Outputs => (from x in _outputs select x.Item3).ToArray();
+#pragma warning disable IDE0051
+        private int[] Outputs => (from x in _outputs select x.Item3).ToArray(); // called by reflection for grading.
+#pragma warning restore IDE0051
     }
 }
