@@ -26,7 +26,7 @@ namespace CodingRange
 
         public void Evaluate(MethodInfo method)
         {
-            Console.WriteLine("\nOutput:");
+            if (_testCases[0].inputs[0] is not DummyConsole) Console.WriteLine("\nOutput:");
             if (_testCases[0].inputs.Length == 0 || _testCases[0].inputs[0] is not DummyConsole) Console.WriteLine();
 
             foreach (var testCase in _testCases)

@@ -34,8 +34,8 @@ namespace CodingRange
 
         public void Write(object x)
         {
-            _output.Append(x);
-            Console.Write(x);
+            if (_interactive) Console.Write(x);
+            else _output.Append(x);
         }
 
         public string ReadLine() => _interactive ? Console.ReadLine() : _inputs.Dequeue();
@@ -52,7 +52,7 @@ namespace CodingRange
         {
             if (_output[^1] == '\n')
             {
-                Console.WriteLine();
+                //Console.WriteLine();
                 _output.Remove(_output.Length - 1, 1);
             }
 
@@ -68,7 +68,10 @@ namespace CodingRange
                 Console.WriteLine("Inputs:");
                 foreach (string s in _inputsCopy) Console.WriteLine(s);
 
-                Console.WriteLine("Expected:");
+                Console.WriteLine("Your Output:");
+                Console.WriteLine(_output);
+
+                Console.WriteLine("Expected Output:");
                 Console.WriteLine(expectedOutput);
 
                 return false;
