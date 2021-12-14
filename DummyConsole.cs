@@ -38,7 +38,21 @@ namespace CodingRange
             else _output.Append(x);
         }
 
-        public string ReadLine() => _interactive ? Console.ReadLine() : _inputs.Dequeue();
+        public string ReadLine()
+        {
+            if (_interactive)
+            {
+                return Console.ReadLine();
+            }
+            else if (_inputs.Count == 0)
+            {
+                throw new Exception("Error! No more input is available for this test case!");
+            }
+            else
+            {
+                return _inputs.Dequeue();
+            }
+        }
 
         public void DisplayExample(string expectedOutput)
         {
@@ -50,12 +64,8 @@ namespace CodingRange
 
         public bool Grade(string expectedOutput)
         {
-            if (_output[^1] == '\n')
-            {
-                //Console.WriteLine();
-                _output.Remove(_output.Length - 1, 1);
-            }
-
+            if (_output[^1] == '\n') _output.Remove(_output.Length - 1, 1);
+            
             if (expectedOutput != _output.ToString())
             {
                 Console.WriteLine("Error!\n");

@@ -37,7 +37,11 @@ namespace CodingRange
             {
                 return _random.Next(min, max);
             }
-            else
+            else if (_queue.Count == 0)
+            {
+                throw new Exception("Error! No more random values are available for this test case!");
+            }
+            else 
             {
                 (int fMin, int fMax, int x) = _queue.Dequeue();
 

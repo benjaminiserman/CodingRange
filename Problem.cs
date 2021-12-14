@@ -52,7 +52,7 @@ namespace CodingRange
                 }
                 catch (TargetParameterCountException)
                 {
-                    Console.WriteLine($"Error! Incorrect number of parameters. Problem \"{_name}\" expects {testCase.inputs?.Length ?? 0} inputs.");
+                    Console.WriteLine($"Error! Incorrect number of parameters found... This may be due to an error in your method signature. Does it match \"{_expectedParameters}\"?");
                     return;
                 }
                 catch (ArgumentException)
