@@ -62,13 +62,29 @@ namespace CodingRange
             Console.WriteLine(expectedOutput);
         }
 
-        public bool Grade(string expectedOutput)
+        public bool Grade(TestCase testCase, object result)
         {
-            if (_output[^1] == '\n') _output.Remove(_output.Length - 1, 1);
-            
-            if (expectedOutput != _output.ToString())
+            if (_output.Length != 0 && _output[^1] == '\n') _output.Remove(_output.Length - 1, 1);
+
+            bool matches;
+
+            if (result is null == testCase.expectedOutput is string)
             {
-                Console.WriteLine("Error!\n");
+                matches = result is null
+                    ? Problem.IsEqual(testCase.expectedOutput, _output.ToString()) // remember, _output is StringBuilder
+                    : Problem.IsEqual(testCase.expectedOutput, result);
+            }
+            else
+            {
+                if (result is null) Console.WriteLine("\nError! Method output is void, but probably shouldn't be.");
+                else Console.WriteLine("\nError! Method output isn't void, but probably should be.");
+
+                return false;
+            }
+
+            if (!matches)
+            {
+                Console.WriteLine("\nError!\n");
 
                 if (DummyRandom is not null)
                 {
@@ -79,15 +95,14 @@ namespace CodingRange
                 foreach (string s in _inputsCopy) Console.WriteLine(s);
 
                 Console.WriteLine("Your Output:");
-                Console.WriteLine(_output);
+                if (result is null) Console.WriteLine(_output);
+                else Console.WriteLine(DisplayHelper.ForDisplay(result, false));
 
                 Console.WriteLine("Expected Output:");
-                Console.WriteLine(expectedOutput);
-
-                return false;
+                Console.WriteLine(testCase.expectedOutput is string ? testCase.expectedOutput : DisplayHelper.ForDisplay(testCase.expectedOutput, false));
             }
 
-            return true;
+            return matches;
         }
     }
 }

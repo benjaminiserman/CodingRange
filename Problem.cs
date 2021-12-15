@@ -64,7 +64,8 @@ namespace CodingRange
                 if ((testCase.inputs?.Length ?? 0) > 0 && testCase.inputs[0] is DummyConsole dummy)
                 {
                     if (testCase.inputs.Length >= 2 && testCase.inputs[1] is DummyRandom random) dummy.DummyRandom = random;
-                    if (!(bool)typeof(DummyConsole).GetMethod("Grade", (BindingFlags)(-1)).Invoke(dummy, new[] { testCase.expectedOutput })) return;
+                    
+                    if (!(bool)typeof(DummyConsole).GetMethod("Grade", (BindingFlags)(-1)).Invoke(dummy, new object[] { testCase, result })) return;
                 }
                 else if (!IsEqual(result, testCase.expectedOutput))
                 {
@@ -106,7 +107,7 @@ namespace CodingRange
             return (from x in _testCases[0].inputs select x.GetType()).ToArray();
         }
 
-        private bool IsEqual(object x, object y)
+        public static bool IsEqual(object x, object y)
         {
             if (x.GetType() != y.GetType()) return false;
 
