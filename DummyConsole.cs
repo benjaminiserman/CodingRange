@@ -46,6 +46,7 @@ namespace CodingRange
             }
             else if (_inputs.Count == 0)
             {
+                Console.WriteLine("Error! No more input is available for this test case!");
                 throw new Exception("Error! No more input is available for this test case!");
             }
             else
@@ -62,29 +63,29 @@ namespace CodingRange
             Console.WriteLine(expectedOutput);
         }
 
-        public bool Grade(TestCase testCase, object result)
+        public bool Grade(TestCase testCase, object result, Type returnType)
         {
             if (_output.Length != 0 && _output[^1] == '\n') _output.Remove(_output.Length - 1, 1);
 
             bool matches;
 
-            if (result is null == testCase.expectedOutput is string)
+            if (returnType == testCase.expectedOutput.GetType())
             {
-                matches = result is null
+                matches = testCase.expectedOutput is string
                     ? Problem.IsEqual(testCase.expectedOutput, _output.ToString()) // remember, _output is StringBuilder
                     : Problem.IsEqual(testCase.expectedOutput, result);
             }
             else
             {
-                if (result is null) Console.WriteLine("\nError! Method output is void, but probably shouldn't be.");
-                else Console.WriteLine("\nError! Method output isn't void, but probably should be.");
+                if (returnType == typeof(void)) Console.WriteLine("Error! Method output is void, but probably shouldn't be.");
+                else Console.WriteLine("Error! Method output isn't void, but probably should be.");
 
                 return false;
             }
 
             if (!matches)
             {
-                Console.WriteLine("\nError!\n");
+                Console.WriteLine("Error!\n");
 
                 if (DummyRandom is not null)
                 {
@@ -95,8 +96,17 @@ namespace CodingRange
                 foreach (string s in _inputsCopy) Console.WriteLine(s);
 
                 Console.WriteLine("Your Output:");
-                if (result is null) Console.WriteLine(_output);
-                else Console.WriteLine(DisplayHelper.ForDisplay(result, false));
+                if (testCase.expectedOutput is string) Console.WriteLine(_output);
+                else
+                {
+                    if (_output.Length > 0)
+                    {
+                        Console.WriteLine("Debug:");
+                        Console.WriteLine(_output);
+                    }
+
+                    Console.WriteLine($"Returned: {DisplayHelper.ForDisplay(result, false)}");
+                }
 
                 Console.WriteLine("Expected Output:");
                 Console.WriteLine(testCase.expectedOutput is string ? testCase.expectedOutput : DisplayHelper.ForDisplay(testCase.expectedOutput, false));
@@ -104,5 +114,7 @@ namespace CodingRange
 
             return matches;
         }
+
+        public void DisplayInputs() => Console.WriteLine(DisplayHelper.ForDisplay(_inputsCopy, false));
     }
 }

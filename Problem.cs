@@ -26,8 +26,8 @@ namespace CodingRange
 
         public void Evaluate(MethodInfo method)
         {
-            if (_testCases[0].inputs[0] is not DummyConsole) Console.WriteLine("\nOutput:");
-            if (_testCases[0].inputs.Length == 0 || _testCases[0].inputs[0] is not DummyConsole) Console.WriteLine();
+            Console.WriteLine("\nOutput:");
+            if (_testCases[0].inputs.Length == 0 || _testCases[0].inputs[0] is DummyConsole) Console.WriteLine();
 
             foreach (var testCase in _testCases)
             {
@@ -65,7 +65,7 @@ namespace CodingRange
                 {
                     if (testCase.inputs.Length >= 2 && testCase.inputs[1] is DummyRandom random) dummy.DummyRandom = random;
                     
-                    if (!(bool)typeof(DummyConsole).GetMethod("Grade", (BindingFlags)(-1)).Invoke(dummy, new object[] { testCase, result })) return;
+                    if (!(bool)typeof(DummyConsole).GetMethod("Grade", (BindingFlags)(-1)).Invoke(dummy, new object[] { testCase, result, method.ReturnType })) return;
                 }
                 else if (!IsEqual(result, testCase.expectedOutput))
                 {
@@ -109,6 +109,7 @@ namespace CodingRange
 
         public static bool IsEqual(object x, object y)
         {
+            if (x is null ^ y is null) return false;
             if (x.GetType() != y.GetType()) return false;
 
 #pragma warning disable IDE0038, IDE0020 // Use pattern matching // disabled to maintain parallel structure
