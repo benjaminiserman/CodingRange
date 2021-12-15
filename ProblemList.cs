@@ -592,6 +592,31 @@ namespace CodingRange
                 new(new object[] { new List<string>() { "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana" }, new List<string>() { "Maine", "Minnesota", "Michigan", "Massachusetts", "Oregon", "California", "Nevada", "Wisconsin", "Iowa", "Kansas", "Illinois", "Indiana", "Ohio", "Pennsylvania", "New York", "Vermont", "New Hampshire", "New Jersey", "Rhode Island", "Connecticut" } }, new List<string>() { "Maine", "Massachusetts", "Michigan", "Minnesota" }),
                 new(new object[] { new List<string>() { "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana" }, new List<string>() { "Arkansas", "Maryland", "Maine", "Oregon" } }, new List<string>() { "Maine", "Maryland" }),
                 new(new object[] { new List<string>() { "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana" }, new List<string>() { "Massachusetts", "Kentucky", "Washington", "Alaska", "Michigan", "Montana" } }, new List<string>() { "Massachusetts", "Michigan", "Montana" }),
+            }),
+            // 51
+            new Problem("Farewell", "With that, the cowboys have all the data they need to begin their search. As a parting gift, they've left you DUMMYCONSOLE, a powerful tool you'll be using from now on to better understand programming with a console app environment. For your first assignment, make DummyConsole print \"Farewell, ram ranch cowboys...\" to the console output.", "DummyConsole Console", "void", new TestCase[]
+            {
+                new(new object[] { new DummyConsole(Array.Empty<string>()) }, "Farewell, ram ranch cowboys...")
+            }),
+            // 52
+            new Problem("Greetings!", "When a user inputs a string representing their name, print \"Hello! \" followed by the name they inputted, followed by an exclamation mark.", "DummyConsole Console", "void", new TestCase[]
+            {
+                new(new object[] { new DummyConsole("Ben") }, "Hello Ben!"),
+                new(new object[] { new DummyConsole("Jack") }, "Hello Jack!"),
+                new(new object[] { new DummyConsole("King Edward") }, "Hello King Edward!"),
+                new(new object[] { new DummyConsole("Julius Caesar") }, "Hello Julius Caesar!"),
+                new(new object[] { new DummyConsole("William Shakespeare") }, "Hello William Shakespeare!"),
+                new(new object[] { new DummyConsole("John F. Kennedy") }, "Hello John F. Kennedy!"),
+                new(new object[] { new DummyConsole("Grant MacDonald") }, "Hello Grant MacDonald!"),
+            }),
+            // 53
+            new Problem("Grocery List", "When a user inputs a string representing an item they want to buy, add it to a list of strings representing their grocery list. Return the list of strings.", "DummyConsole Console", "List<string>", new TestCase[]
+            {
+                new(new object[] { new DummyConsole("Eggs", "Milk", "Flour", "Bacon", "Syrup", "Butter", "") }, new List<string>() { "Eggs", "Milk", "Flour", "Bacon", "Syrup", "Butter" }),
+                new(new object[] { new DummyConsole("") }, new List<string>()),
+                new(new object[] { new DummyConsole("Apples", "Oranges", "Lemons", "Blueberries", "Cherries", "Limes", "Grapes", "") }, new List<string>() { "Apples", "Oranges", "Lemons", "Blueberries", "Cherries", "Limes", "Grapes" }),
+                new(new object[] { new DummyConsole("Blood", "") }, new List<string>() { "Blood" }),
+                new(new object[] { new DummyConsole("lima beans", "kidney beans", "black beans", "grean beans (???)", "") }, new List<string>() { "lima beans", "kidney beans", "black beans", "grean beans (???)" }),
             })
         };
     }
