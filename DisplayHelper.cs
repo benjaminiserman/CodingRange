@@ -22,6 +22,7 @@ namespace CodingRange
 
         public static string ForDisplay(object x, bool simplify) => x switch
         {
+            null => "null",
             string str => $"\"{str}\"",
             IEnumerable ie => CollectionToString(ie, simplify),
             char c => $"'{c}'",
