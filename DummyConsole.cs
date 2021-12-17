@@ -77,8 +77,8 @@ namespace CodingRange
             }
             else
             {
-                if (returnType == typeof(void)) Console.WriteLine("Error! Method output is void, but probably shouldn't be.");
-                else Console.WriteLine("Error! Method output isn't void, but probably should be.");
+                if (returnType == typeof(void)) Console.WriteLine("Error! Method return type is void, but probably shouldn't be.");
+                else Console.WriteLine("Error! Method return type isn't void, but probably should be.");
 
                 return false;
             }

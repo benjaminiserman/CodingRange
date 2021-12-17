@@ -81,7 +81,7 @@ namespace CodingRange
         {
             int id = ProblemList.List.FindIndex(x => x._name == _name);
 
-            Console.WriteLine($"Problem {id}: {_name}\nExpected method parameters: {_expectedParameters}\nExpected output type: {DisplayHelper.ForDisplay(_expectedOutput, false)}\n\nInstructions:\n\n{_description}");
+            Console.WriteLine($"Problem {id}: {_name}\nExpected method parameters: {_expectedParameters}\nExpected return type: {DisplayHelper.ForDisplay(_expectedOutput, false)}\n\nInstructions:\n\n{_description}");
             if (_testCases[0].inputs != null)
             {
                 if (_testCases[0].expectedOutput is bool)
