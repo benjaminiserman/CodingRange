@@ -43,7 +43,7 @@ namespace CodingRange
                 new(new object[] { true, false, false }, false),
             }),
             // 4
-            new Problem("Cat Person", "You are given two inputs. The first is a boolean representing whether or not a person in question owns a cat.\nThe second refers to whether or not a person owns a dog. Return whether or not the person is a cat person, meaning they own a cat but not a dog.", "bool cat, bool dog", "bool", new TestCase[]
+            new Problem("Cat Person", "You are given two inputs. The first is a boolean representing whether or not a person in question owns a cat. The second refers to whether or not a person owns a dog. Return whether or not the person is a cat person, meaning they own a cat but not a dog.", "bool cat, bool dog", "bool", new TestCase[]
             {
                 new(new object[] { false, false }, false),
                 new(new object[] { false, true }, false),
