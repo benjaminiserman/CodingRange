@@ -132,7 +132,7 @@ namespace CodingRange
                 new(new object[] { 25 }, false),
             }),
             // 11
-            new Problem("Drinking Time", "Being a responsible parent, my children are only allowed to have three alcoholic drinks a day, and they're not allowed to drink in the morning. Given two inputs, the first representing how many drinks they've had and the second representing whether or not it's morning, return whether or not my children are allowed to drink.", "int drinks, bool isMorning", "bool", new TestCase[]
+            new Problem("Drinking Time", "Being a responsible parent, my children are only allowed to have three alcoholic drinks a day, and they're not allowed to drink in the morning. Given two inputs, the first representing how many drinks they've had and the second representing whether or not it's morning, return whether or not my children are allowed to have another drink.", "int drinks, bool isMorning", "bool", new TestCase[]
             {
                 new(new object[] { 5, true }, false),
                 new(new object[] { 0, true }, false),
