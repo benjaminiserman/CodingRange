@@ -611,7 +611,7 @@ namespace CodingRange
                 new(new object[] { new DummyConsole("Grant MacDonald") }, "Hello Grant MacDonald!"),
             }),
             // 53
-            new Problem("Grocery List", "When a user inputs a string representing an item they want to buy, add it to a list of strings representing their grocery list. Return the list of strings.", "DummyConsole Console", "List<string>", new TestCase[]
+            new Problem("Grocery List", "When a user inputs a string representing an item they want to buy, add it to a list of strings representing their grocery list. For each line of user input, add one item. When the user inputs an empty string, return the list of strings.", "DummyConsole Console", "List<string>", new TestCase[]
             {
                 new(new object[] { new DummyConsole("Eggs", "Milk", "Flour", "Bacon", "Syrup", "Butter", "") }, new List<string>() { "Eggs", "Milk", "Flour", "Bacon", "Syrup", "Butter" }),
                 new(new object[] { new DummyConsole("") }, new List<string>()),
