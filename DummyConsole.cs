@@ -69,7 +69,7 @@ namespace CodingRange
 
             bool matches;
 
-            if (returnType == testCase.expectedOutput.GetType())
+            if (returnType == testCase.expectedOutput.GetType() || testCase.expectedOutput is string)
             {
                 matches = testCase.expectedOutput is string
                     ? Problem.IsEqual(testCase.expectedOutput, _output.ToString()) // remember, _output is StringBuilder
