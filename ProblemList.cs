@@ -268,7 +268,7 @@ namespace CodingRange
                 new(new object[] { 27 }, -56),
             }, "I ran out of ideas for funny word problems, so the next few will be generic math questions. Sorry!"),
             // 20
-            new Problem("Binomial Multiplication", "Given an input x, calculate and return y = (x + 2)(3x - 1).", "int x", "int", new TestCase[]
+            new Problem("Binomial Multiplication", "Given an input x, calculate and return (x + 2)(3x - 1).", "int x", "int", new TestCase[]
             {
                 new(new object[] { 5 }, 98),
                 new(new object[] { -7 }, 110),
