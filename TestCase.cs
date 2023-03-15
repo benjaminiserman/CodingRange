@@ -2,7 +2,7 @@
 
 namespace CodingRange
 {
-    public struct TestCase
+    public readonly struct TestCase
     {
         public readonly object[] inputs;
         public readonly object expectedOutput;
@@ -13,13 +13,24 @@ namespace CodingRange
             this.expectedOutput = expectedOutput;
         }
 
-        public void DisplayExample() => Console.WriteLine($"\nExample: {DisplayHelper.ForDisplay(inputs, true)} => {DisplayHelper.ForDisplay(expectedOutput, false)}");
+        public void DisplayExample()
+        {
+            var exampleInputs = DisplayHelper.ForDisplay(inputs, true);
+            var exampleOutputs = DisplayHelper.ForDisplay(expectedOutput, false);
+
+			Console.WriteLine($"\nExample: {exampleInputs} => {exampleOutputs}");
+        }
 
         public void DisplayDiscrepancy(object result)
         {
             Console.WriteLine("Error!");
-            if (inputs is not null && inputs.Length > 0) Console.WriteLine($"Inputs: {DisplayHelper.ForDisplay(inputs, true)}");
-            Console.WriteLine($"Got: {DisplayHelper.ForDisplay(result, false)}\nExpected: {DisplayHelper.ForDisplay(expectedOutput, false)}");
+            if (inputs is not null && inputs.Length > 0)
+			{
+				Console.WriteLine($"Inputs: {DisplayHelper.ForDisplay(inputs, true)}");
+			}
+
+			Console.WriteLine($"Got: {DisplayHelper.ForDisplay(result, false)}");
+            Console.WriteLine($"Expected: {DisplayHelper.ForDisplay(expectedOutput, false)}");
         }
     }
 }

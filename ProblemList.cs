@@ -7,7 +7,7 @@ namespace CodingRange
     {
         /* SPECIAL NOTES
            - unless otherwise noted, you do not need to check for over/underflow or divide by zero
-           - answers involving floats, doubles, or decimals must have a maximum error of 0.0000001
+           - answers involving floats, doubles, or decimals must have a maximum error of 1e-7
            - you may print anything in DummyConsole problems that do not return void
         */
         public static List<Problem> List { get; } = new()

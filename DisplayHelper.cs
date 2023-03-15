@@ -7,23 +7,27 @@ namespace CodingRange
     {
         private static string CollectionToString(IEnumerable array, bool simplify)
         {
-            StringBuilder sb = new(simplify ? string.Empty : "{ ");
+            StringBuilder stringBuilder = new(simplify 
+                ? string.Empty 
+                : "{ ");
 
             foreach (var x in array)
             {
-                sb.Append($"{ForDisplay(x, false)}, ");
+                stringBuilder.Append($"{ForDisplay(x, false)}, ");
             }
 
-            sb.Remove(sb.Length - 2, 2);
+            stringBuilder.Remove(stringBuilder.Length - 2, 2);
 
-            string end = simplify ? string.Empty : " }";
-            return $"{sb}{end}";
+            var end = simplify 
+                ? string.Empty 
+                : " }";
+            return $"{stringBuilder}{end}";
         }
 
         public static string ForDisplay(object x, bool simplify) => x switch
         {
             null => "null",
-            string str => $"\"{str}\"",
+            string s => $"\"{s}\"",
             IEnumerable ie => CollectionToString(ie, simplify),
             char c => $"'{c}'",
             bool b => b.ToString().ToLower(),

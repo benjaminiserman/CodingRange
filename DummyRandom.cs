@@ -37,25 +37,24 @@ namespace CodingRange
             {
                 return _random.Next(min, max);
             }
-            else if (_queue.Count == 0)
+            
+            if (_queue.Count == 0)
             {
                 throw new Exception("Error! No more random values are available for this test case!");
             }
-            else 
+             
+            (var fMin, var fMax, var x) = _queue.Dequeue();
+
+            if (fMin != min || fMax != max)
             {
-                (int fMin, int fMax, int x) = _queue.Dequeue();
-
-                if (fMin != min || fMax != max)
-                {
-                    throw new ArgumentException($"You called Next({min}, {max}) but backend expected Next({fMin}, {fMax})!");
-                }
-
-                return x;
+                throw new ArgumentException($"You called Next({min}, {max}) but backend expected Next({fMin}, {fMax})!");
             }
+
+            return x;
         }
 
 #pragma warning disable IDE0051
-        private int[] Outputs => (from x in _outputs select x.Item3).ToArray(); // called by reflection for grading.
+        private int[] Outputs => _outputs.Select(x => x.Item3).ToArray(); // called by reflection for grading.
 #pragma warning restore IDE0051
     }
 }

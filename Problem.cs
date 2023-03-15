@@ -27,24 +27,28 @@ namespace CodingRange
         public void Evaluate(MethodInfo method)
         {
             Console.WriteLine("\nOutput:");
-            if ((_testCases[0].inputs?.Length ?? 0) == 0 || _testCases[0].inputs[0] is DummyConsole) Console.WriteLine();
+            if (_testCases[0].inputs is null 
+                || _testCases[0].inputs.Length == 0 
+                || _testCases[0].inputs[0] is DummyConsole)
+			{
+				Console.WriteLine();
+			}
 
-            foreach (var testCase in _testCases)
+			foreach (var testCase in _testCases)
             {
                 object result;
 
-                object[] inputsCopy = new object[testCase.inputs?.Length ?? 0];
-                for (int i = 0; i < inputsCopy.Length; i++)
+                var inputsCopy = testCase.inputs?.Select(x =>
                 {
-                    if (testCase.inputs[i] is ICloneable cloneable)
+                    if (x is ICloneable cloneable)
                     {
-                        inputsCopy[i] = cloneable.Clone(); // please god tell me this works
+                        return cloneable.Clone();
                     }
                     else
                     {
-                        inputsCopy[i] = testCase.inputs[i];
+                        return x;
                     }
-                }    
+                }).ToArray() ?? Array.Empty<object>();
 
                 try
                 {
@@ -61,12 +65,26 @@ namespace CodingRange
                     return;
                 }
 
-                if ((testCase.inputs?.Length ?? 0) > 0 && testCase.inputs[0] is DummyConsole dummy)
+                if (testCase.inputs is not null 
+                    && testCase.inputs.Length > 0 
+                    && testCase.inputs[0] is DummyConsole dummy)
                 {
-                    if (testCase.inputs.Length >= 2 && testCase.inputs[1] is DummyRandom random) dummy.DummyRandom = random;
-                    
-                    if (!(bool)typeof(DummyConsole).GetMethod("Grade", (BindingFlags)(-1)).Invoke(dummy, new object[] { testCase, result, method.ReturnType })) return;
-                }
+                    if (testCase.inputs.Length >= 2 
+                        && testCase.inputs[1] is DummyRandom random)
+					{
+						dummy.DummyRandom = random;
+					}
+
+                    var gradeMethod = typeof(DummyConsole)
+                        .GetMethod("Grade", (BindingFlags)(-1));
+
+                    var gradeResult = (bool)gradeMethod.Invoke(dummy, new object[] { testCase, result, method.ReturnType });
+
+					if (!gradeResult)
+					{
+						return;
+					}
+				}
                 else if (!IsEqual(result, testCase.expectedOutput))
                 {
                     testCase.DisplayDiscrepancy(result);
@@ -79,10 +97,10 @@ namespace CodingRange
 
         public void Display()
         {
-            int id = ProblemList.List.FindIndex(x => x._name == _name);
+            var id = ProblemList.List.FindIndex(x => x._name == _name);
 
             Console.WriteLine($"Problem {id}: {_name}\nExpected method parameters: {_expectedParameters}\nExpected return type: {_expectedOutput}\n\nInstructions:\n\n{_description}");
-            if (_testCases[0].inputs != null)
+            if (_testCases[0].inputs is not null)
             {
                 if (_testCases[0].expectedOutput is bool)
                 {
@@ -95,40 +113,72 @@ namespace CodingRange
                 }
             }
 
-            if (!string.IsNullOrWhiteSpace(_specialNotes)) Console.WriteLine($"\n{_specialNotes}");
-        }
+            if (!string.IsNullOrWhiteSpace(_specialNotes))
+			{
+				Console.WriteLine($"\n{_specialNotes}");
+			}
+		}
 
         public bool IsInteractive => _testCases?[0].inputs?[0] is DummyConsole and not null;
 
         public Type[] GetParameterTypes()
         {
-            if (_testCases[0].inputs.Length == 0) return null;
+            if (_testCases[0].inputs.Length == 0)
+			{
+				return null;
+			}
 
-            return (from x in _testCases[0].inputs select x.GetType()).ToArray();
+			return _testCases[0].inputs
+                .Select(x => x.GetType())
+                .ToArray();
         }
 
         public static bool IsEqual(object x, object y)
         {
-            if (x is null ^ y is null) return false;
-            if (x.GetType() != y.GetType()) return false;
+            if (x is null != y is null)
+			{
+				return false;
+			}
+
+			if (x.GetType() != y.GetType())
+			{
+				return false;
+			}
 
 #pragma warning disable IDE0038, IDE0020 // Use pattern matching // disabled to maintain parallel structure
-            if (x is string) return x.Equals(y);
-            else if (x is ICollection)
+			if (x is string)
+			{
+				return x.Equals(y);
+			}
+			else if (x is ICollection)
             {
-                ICollection xCollection = (ICollection)x;
-                ICollection yCollection = (ICollection)y;
+                var xCollection = (ICollection)x;
+                var yCollection = (ICollection)y;
 
-                if (xCollection.Count != yCollection.Count) return false;
+                if (xCollection.Count != yCollection.Count)
+				{
+					return false;
+				}
 
-                return !xCollection.Cast<object>().Zip(yCollection.Cast<object>(), (a, b) => IsEqual(a, b)).Any(equal => !equal);
+				return !xCollection.Cast<object>()
+                    .Zip(yCollection.Cast<object>(), IsEqual)
+                    .Any(equal => !equal);
             }
-            else if (x is float) return Math.Abs((float)x - (float)y) <= 0.0000001f;
-            else if (x is double) return Math.Abs((double)x - (double)y) <= 0.0000001d;
-            else if (x is decimal) return Math.Abs((decimal)x - (decimal)y) <= 0.0000001m;
+            else if (x is float)
+			{
+				return Math.Abs((float)x - (float)y) <= 0.0000001f;
+			}
+			else if (x is double)
+			{
+				return Math.Abs((double)x - (double)y) <= 0.0000001d;
+			}
+			else if (x is decimal)
+			{
+				return Math.Abs((decimal)x - (decimal)y) <= 0.0000001m;
+			}
 #pragma warning restore IDE0038, IDE0020 // Use pattern matching
 
-            return x.Equals(y);
+			return x.Equals(y);
         }
     }
 }

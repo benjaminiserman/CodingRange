@@ -24,7 +24,7 @@ namespace CodingRange
         {
             _inputsCopy = inputs;
 
-            foreach (string s in inputs)
+            foreach (var s in inputs)
             {
                 _inputs.Enqueue(s);
             }
@@ -34,9 +34,15 @@ namespace CodingRange
 
         public void Write(object x)
         {
-            if (_interactive) Console.Write(x);
-            else _output.Append(x);
-        }
+            if (_interactive)
+			{
+				Console.Write(x);
+			}
+			else
+			{
+				_output.Append(x);
+			}
+		}
 
         public string ReadLine()
         {
@@ -44,46 +50,54 @@ namespace CodingRange
             {
                 return Console.ReadLine();
             }
-            else if (_inputs.Count == 0)
+            
+            if (_inputs.Count == 0)
             {
                 Console.WriteLine("Error! No more input is available for this test case!");
                 throw new Exception("Error! No more input is available for this test case!");
             }
-            else
-            {
-                return _inputs.Dequeue();
-            }
+            
+            return _inputs.Dequeue();
         }
 
         public void DisplayExample(string expectedOutput)
         {
             Console.WriteLine("\nExample Inputs:");
-            foreach (string s in _inputsCopy) Console.WriteLine(s);
-            Console.WriteLine("Should Output:");
+            foreach (var s in _inputsCopy)
+			{
+				Console.WriteLine(s);
+			}
+
+			Console.WriteLine("Should Output:");
             Console.WriteLine(expectedOutput);
         }
 
         public bool Grade(TestCase testCase, object result, Type returnType)
         {
-            if (_output.Length != 0 && _output[^1] == '\n') _output.Remove(_output.Length - 1, 1);
+            if (_output.Length != 0 && _output[^1] == '\n')
+			{
+				_output.Remove(_output.Length - 1, 1);
+			}
 
-            bool matches;
+			if (returnType != testCase.expectedOutput.GetType())
+			{
+				if (returnType == typeof(void))
+				{
+					Console.WriteLine("Error! Method return type is void, but probably shouldn't be.");
+				}
+				else
+				{
+					Console.WriteLine("Error! Method return type isn't void, but probably should be.");
+				}
 
-            if (returnType == testCase.expectedOutput.GetType() || testCase.expectedOutput is string)
-            {
-                matches = testCase.expectedOutput is string
-                    ? Problem.IsEqual(testCase.expectedOutput, _output.ToString()) // remember, _output is StringBuilder
-                    : Problem.IsEqual(testCase.expectedOutput, result);
-            }
-            else
-            {
-                if (returnType == typeof(void)) Console.WriteLine("Error! Method return type is void, but probably shouldn't be.");
-                else Console.WriteLine("Error! Method return type isn't void, but probably should be.");
+				return false;
+			}
 
-                return false;
-            }
+			var matches = testCase.expectedOutput is string
+				? Problem.IsEqual(testCase.expectedOutput, _output.ToString()) // remember, _output is StringBuilder
+				: Problem.IsEqual(testCase.expectedOutput, result);
 
-            if (!matches)
+			if (!matches)
             {
                 Console.WriteLine("Error!\n");
 
@@ -93,11 +107,17 @@ namespace CodingRange
                 }
 
                 Console.WriteLine("Inputs:");
-                foreach (string s in _inputsCopy) Console.WriteLine(s);
+                foreach (var s in _inputsCopy)
+				{
+					Console.WriteLine(s);
+				}
 
-                Console.WriteLine("Your Output:");
-                if (testCase.expectedOutput is string) Console.WriteLine(_output);
-                else
+				Console.WriteLine("Your Output:");
+                if (testCase.expectedOutput is string)
+				{
+					Console.WriteLine(_output);
+				}
+				else
                 {
                     if (_output.Length > 0)
                     {
@@ -109,7 +129,9 @@ namespace CodingRange
                 }
 
                 Console.WriteLine("Expected Output:");
-                Console.WriteLine(testCase.expectedOutput is string ? testCase.expectedOutput : DisplayHelper.ForDisplay(testCase.expectedOutput, false));
+                Console.WriteLine(testCase.expectedOutput is string 
+                    ? testCase.expectedOutput 
+                    : DisplayHelper.ForDisplay(testCase.expectedOutput, false));
             }
 
             return matches;
