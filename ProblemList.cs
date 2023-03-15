@@ -51,7 +51,7 @@ namespace CodingRange
                 new(new object[] { true, true }, false),
             }, "Bonus! Can you solve this problem without using the NOT operator?"),
             // 5
-            new Problem("Matchmaking <3", "A wise man once said, \"A relationship can only succeed if both partners have the same opinion on whether or not popcorn is tasty.\" This is of course, a true fact of life. Given two inputs, the first representing whether or not the first partner likes popcorn, and the second representing whether or not the second partner likes popcorn, determine whether or not this couple is truly meant to be.", "bool heLikesPopcorn, bool sheLikesPopcorn", "bool", new TestCase[]
+            new Problem("Matchmaking <3", "A wise man once said, \"A relationship can only succeed if both partners have the same opinion on whether or not pasta is tasty.\" This is of course, a true fact of life. Given two inputs, the first representing whether or not the first partner likes pasta, and the second representing whether or not the second partner likes pasta, determine whether or not this couple is truly meant to be.", "bool heLikesPasta, bool sheLikesPasta", "bool", new TestCase[]
             {
                 new(new object[] { false, false }, true),
                 new(new object[] { false, true }, false),
